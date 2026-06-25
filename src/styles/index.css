@@ -1,0 +1,24 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Counties horizontal scroll — styled scrollbar */
+.counties-scroll {
+  overflow-x: scroll;
+}
+.counties-scroll::-webkit-scrollbar {
+  height: 6px;
+  display: block;
+}
+.counties-scroll::-webkit-scrollbar-track {
+  background: #C8CCC9;
+  border-radius: 9999px;
+}
+.counties-scroll::-webkit-scrollbar-thumb {
+  background: #8A9490;
+  border-radius: 9999px;
+  transition: background-color 0.4s ease;
+}
+.counties-scroll.is-scrolling::-webkit-scrollbar-thumb {
+  background: #1A3D2B;
+}
