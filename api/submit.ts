@@ -27,12 +27,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const { subject, html } = formatEmail(formType, data);
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: `Sasquatch Site <${SENDER}>`,
       to: [RECIPIENT],
       subject,
       html,
     });
+
+    if (error) {
+      console.error('Resend error:', JSON.stringify(error));
+      return res.status(500).json({ message: 'Failed to send email' });
+    }
 
     return res.status(200).json({ message: 'Form submitted successfully' });
   } catch (error) {
