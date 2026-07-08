@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { usePageTitle } from '../hooks/usePageTitle';
 import {
@@ -11,6 +11,9 @@ import {
   Table,
   FileSpreadsheet,
   Clock,
+  MapPin,
+  Search,
+  Database,
 } from 'lucide-react';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
@@ -18,18 +21,11 @@ import { StatusChip } from '../components/StatusChip';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { totalCounties, totalMunicipalities } from '../data/jurisdictions';
 
 export function HomePage() {
   usePageTitle();
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [isCountiesScrolling, setIsCountiesScrolling] = useState(false);
-  const countiesScrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleCountiesScroll = () => {
-    setIsCountiesScrolling(true);
-    if (countiesScrollTimer.current) clearTimeout(countiesScrollTimer.current);
-    countiesScrollTimer.current = setTimeout(() => setIsCountiesScrolling(false), 1000);
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -55,7 +51,7 @@ export function HomePage() {
               letterSpacing: '0.15em',
             }}
           >
-            PERMIT INTELLIGENCE FOR CONTRACTORS
+            JURISDICTION INTELLIGENCE FOR CONTRACTORS
           </div>
 
           <h1
@@ -66,7 +62,7 @@ export function HomePage() {
               lineHeight: 1.1,
             }}
           >
-            Stop Managing Permits.<br />Start Running Jobs.
+            Know the Rules<br />Before You Break Them.
           </h1>
 
           <p
@@ -76,20 +72,20 @@ export function HomePage() {
               lineHeight: 1.6,
             }}
           >
-            One dashboard to track permits, schedule inspections, manage jobs, and catch cost overruns — across
-            every Colorado jurisdiction. No more portal-hopping.
+            One place to know what every Colorado jurisdiction requires — then track the permits, inspections, and
+            jobs that follow. No more guessing, no more portal-hopping.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <a href="https://app.sasquatchpermit.com">
+            <Link to="/coming-soon">
               <Button
                 size="lg"
                 className="bg-white text-[#1A3D2B] hover:bg-gray-100 px-8"
                 style={{ fontWeight: 600 }}
               >
-                Start Free Trial
+                Request Early Access
               </Button>
-            </a>
+            </Link>
             <Link to="/contact">
               <Button
                 size="lg"
@@ -103,13 +99,8 @@ export function HomePage() {
           </div>
 
           <div className="flex items-center gap-3 justify-center">
-            <div className="flex -space-x-2">
-              <div className="w-8 h-8 rounded-full bg-[#4CAF70] border-2 border-[#1A3D2B]" />
-              <div className="w-8 h-8 rounded-full bg-[#3D7A50] border-2 border-[#1A3D2B]" />
-              <div className="w-8 h-8 rounded-full bg-[#2D5A3D] border-2 border-[#1A3D2B]" />
-            </div>
             <p className="text-white/60 text-sm">
-              Trusted by electrical, plumbing, roofing & solar contractors
+              Built for Colorado's electrical, plumbing, roofing &amp; solar contractors
             </p>
           </div>
         </div>
@@ -133,42 +124,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Trust Bar / Logo Bar */}
-      <section className="bg-white py-8 border-b border-[#ECEEED]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p
-            className="text-[#5A6560] mb-4"
-            style={{
-              fontSize: '13px',
-            }}
-          >
-            Built for Colorado's trade contractors
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <StatusChip status="live" label="Denver" />
-            <StatusChip status="live" label="Arapahoe" />
-            <StatusChip status="live" label="Jefferson" />
-            <StatusChip status="live" label="Douglas" />
-            <StatusChip status="live" label="El Paso" />
-            <StatusChip status="live" label="Boulder" />
-            <StatusChip status="live" label="Larimer" />
-            <StatusChip status="live" label="Adams" />
-            <StatusChip status="live" label="Weld" />
-            <StatusChip status="live" label="Pueblo" />
-            <StatusChip status="live" label="Mesa" />
-            <StatusChip status="live" label="Garfield" />
-            <StatusChip status="live" label="Eagle" />
-            <StatusChip status="live" label="Summit" />
-            <StatusChip status="live" label="Routt" />
-            <StatusChip status="live" label="Broomfield" />
-            <StatusChip status="live" label="Clear Creek" />
-            <StatusChip status="live" label="Gilpin" />
-            <StatusChip status="live" label="Park" />
-            <StatusChip status="live" label="Teller" />
-          </div>
-        </div>
-      </section>
-
       {/* Problem Statement Section */}
       <section className="bg-[#F7F8F6] py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -182,7 +137,7 @@ export function HomePage() {
                   lineHeight: 1.2,
                 }}
               >
-                Your team is losing hours every week to permit chaos.
+                Your team is losing hours every week guessing what a jurisdiction requires.
               </h2>
             </div>
 
@@ -195,11 +150,11 @@ export function HomePage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#1A1F1C] mb-2">
-                    Logging into 5 different county portals to check one permit status.
+                    Finding out what a county requires only after an inspector fails you.
                   </h3>
                   <p className="text-[#5A6560] text-sm">
-                    Every jurisdiction has its own system. You waste hours every week just tracking down basic
-                    information.
+                    Every jurisdiction has its own rules, and nobody wrote them all down in one place. You find out
+                    the hard way, on the job.
                   </p>
                 </div>
               </div>
@@ -212,11 +167,11 @@ export function HomePage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#1A1F1C] mb-2">
-                    Inspections missed because reminders lived in someone's head.
+                    Missing a jurisdiction's cutoff because nobody knew to look for it.
                   </h3>
                   <p className="text-[#5A6560] text-sm">
-                    Your crew shows up to the wrong address. The inspector never got scheduled. Every mistake costs days
-                    and money.
+                    Every county sets its own inspection windows and notice periods. Without a place to check, you
+                    find out only when the appointment slips a week.
                   </p>
                 </div>
               </div>
@@ -229,10 +184,11 @@ export function HomePage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#1A1F1C] mb-2">
-                    Cost overruns discovered weeks after the damage is done.
+                    A permit gets rejected because a code changed and nobody caught it.
                   </h3>
                   <p className="text-[#5A6560] text-sm">
-                    You find out materials went over budget when it's too late to fix it. Profit margins evaporate.
+                    Jurisdictions update requirements without warning. You find out when your plans get kicked back —
+                    after the work is already scheduled.
                   </p>
                 </div>
               </div>
@@ -246,8 +202,8 @@ export function HomePage() {
                 fontWeight: 500,
               }}
             >
-              <strong style={{ fontWeight: 700 }}>Sasquatch centralizes everything.</strong> One login. Every permit.
-              Every inspection. Every job.
+              <strong style={{ fontWeight: 700 }}>Sasquatch tells you the rules first</strong> — then centralizes
+              every permit, inspection, and job that follows.
             </p>
           </div>
         </div>
@@ -275,7 +231,7 @@ export function HomePage() {
                 fontWeight: 700,
               }}
             >
-              Everything you need to stay ahead of every permit.
+              Everything you need to know the rules and stay ahead of every job.
             </h2>
           </div>
 
@@ -284,17 +240,17 @@ export function HomePage() {
               <TabsTrigger value="dashboard" className="text-xs md:text-sm py-3">
                 Dashboard
               </TabsTrigger>
+              <TabsTrigger value="jurisdiction" className="text-xs md:text-sm py-3">
+                Jurisdictions
+              </TabsTrigger>
               <TabsTrigger value="permits" className="text-xs md:text-sm py-3">
                 Permits
-              </TabsTrigger>
-              <TabsTrigger value="jobs" className="text-xs md:text-sm py-3">
-                Jobs
               </TabsTrigger>
               <TabsTrigger value="inspections" className="text-xs md:text-sm py-3">
                 Inspections
               </TabsTrigger>
-              <TabsTrigger value="cost" className="text-xs md:text-sm py-3">
-                Cost Intelligence
+              <TabsTrigger value="jobs" className="text-xs md:text-sm py-3">
+                Jobs
               </TabsTrigger>
               <TabsTrigger value="attention" className="text-xs md:text-sm py-3">
                 Attention Center
@@ -309,7 +265,7 @@ export function HomePage() {
                     'See all active permits by health status at a glance',
                     'Daily action list surfaces what needs your attention today',
                     'Upcoming inspections with dates and addresses',
-                    'Cost intelligence snapshot — leakage alerts and critical issues',
+                    'Jurisdiction snapshot — requirements and critical issues in one view',
                   ].map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-[#4CAF70] flex-shrink-0 mt-0.5" />
@@ -339,6 +295,48 @@ export function HomePage() {
                           <FileText className="w-4 h-4 text-[#5A6560]" />
                           <span>12 active permits tracked</span>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Jurisdiction Intel Tab */}
+            <TabsContent value="jurisdiction">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="space-y-4">
+                  {[
+                    "Codes, cutoff times, and quirks for every supported county in one place",
+                    'AI assistant answers permitting questions in plain language',
+                    'Search any city or county to check coverage instantly',
+                    'Sub-jurisdiction detail expanding as we grow past the county level',
+                  ].map((feature, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#4CAF70] flex-shrink-0 mt-0.5" />
+                      <p className="text-[#1A1F1C]">
+                        {feature}
+                      </p>
+                    </div>
+                  ))}
+                  <Link
+                    to="/jurisdictions"
+                    className="inline-flex items-center gap-2 text-[#1A3D2B] hover:text-[#2D5A3D] font-semibold"
+                  >
+                    Check your jurisdiction <MapPin className="w-4 h-4" />
+                  </Link>
+                </div>
+                <div className="bg-[#F7F8F6] p-8 rounded-xl">
+                  <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <h3 className="font-semibold mb-4">Jurisdiction Search</h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 px-3 py-2.5 rounded-md border border-[#ECEEED] text-sm text-[#5A6560]">
+                        <Search className="w-4 h-4" />
+                        <span>Littleton</span>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-[#E6F4EC] rounded">
+                        <span className="text-sm text-[#1A1F1C]">Littleton, Arapahoe County</span>
+                        <span className="text-xs font-semibold text-[#1E6B40]">Covered</span>
                       </div>
                     </div>
                   </div>
@@ -386,7 +384,7 @@ export function HomePage() {
                 <div className="space-y-4">
                   {[
                     'Jobs auto-generated from your permit data',
-                    'Track crew size, budget vs. actual, and progress %',
+                    'Track crew size and progress %',
                     'Visual status: In Progress / Planning / On Hold / Inspection Pending',
                     'Time tracking built directly into each job',
                   ].map((feature, i) => (
@@ -458,46 +456,6 @@ export function HomePage() {
                           {i + 1}
                         </div>
                       ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            {/* Cost Intelligence Tab */}
-            <TabsContent value="cost">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-4">
-                  {[
-                    'Real-time cost leakage alerts',
-                    'Materials and work order uploads (drag and drop)',
-                    'Per-job budget vs. actual breakdowns',
-                    'Catch overruns before they become write-offs',
-                  ].map((feature, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#4CAF70] flex-shrink-0 mt-0.5" />
-                      <p className="text-[#1A1F1C]">
-                        {feature}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div className="bg-[#F7F8F6] p-8 rounded-xl">
-                  <div className="bg-white rounded-lg p-6 shadow-lg">
-                    <h3 className="font-semibold mb-4">Cost Overview</h3>
-                    <div className="space-y-3">
-                      <div className="flex justify-between p-3 bg-[#E6F4EC] rounded">
-                        <span className="text-sm">Budget</span>
-                        <span className="font-semibold">$12,500</span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-[#FBF0E0] rounded">
-                        <span className="text-sm">Actual</span>
-                        <span className="font-semibold">$11,800</span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-[#E6F4EC] rounded">
-                        <span className="text-sm text-[#1E6B40]">Under Budget</span>
-                        <span className="font-semibold text-[#1E6B40]">$700</span>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -596,86 +554,143 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Jurisdiction Intelligence */}
+      {/* Jurisdiction Intelligence Teaser */}
       <section className="bg-[#F7F8F6] py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2
-              className="text-[#1A1F1C] mb-4"
-              style={{
-                fontSize: 'clamp(32px, 4vw, 40px)',
-                fontWeight: 700,
-              }}
-            >
-              We know how every Colorado county works.
-            </h2>
-            <p className="text-[#5A6560] max-w-3xl mx-auto">
-              Portal URLs, inspection cutoff times, contact numbers, and processing windows — built in for every
-              supported jurisdiction.
-            </p>
-          </div>
-
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
           <div
-            onScroll={handleCountiesScroll}
-            className={`counties-scroll flex gap-4 pb-3 mb-8 -mx-6 lg:-mx-8 px-6 lg:px-8${isCountiesScrolling ? ' is-scrolling' : ''}`}
+            className="uppercase tracking-wider mb-4"
             style={{
-              scrollbarWidth: 'thin',
-              scrollbarColor: isCountiesScrolling ? '#1A3D2B #ECEEED' : '#9CA3AF #ECEEED',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '13px',
+              color: '#4CAF70',
+              letterSpacing: '0.1em',
             }}
           >
-            {[
-              { name: 'Denver', status: 'live' as const, detail: 'Inspections by 3:30 PM' },
-              { name: 'Arapahoe', status: 'live' as const, detail: '3-5 day processing' },
-              { name: 'Jefferson', status: 'live' as const, detail: 'Online portal sync' },
-              { name: 'Douglas', status: 'live' as const, detail: '48hr processing' },
-              { name: 'El Paso', status: 'live' as const, detail: 'Same-day scheduling' },
-              { name: 'Boulder', status: 'live' as const, detail: '24hr advance notice' },
-              { name: 'Larimer', status: 'live' as const, detail: '24hr advance notice' },
-              { name: 'Adams', status: 'live' as const, detail: 'Online portal sync' },
-              { name: 'Weld', status: 'live' as const, detail: '48hr processing' },
-              { name: 'Pueblo', status: 'live' as const, detail: 'Same-day scheduling' },
-              { name: 'Mesa', status: 'live' as const, detail: 'Same-day scheduling' },
-              { name: 'Garfield', status: 'live' as const, detail: '24hr advance notice' },
-              { name: 'Eagle', status: 'live' as const, detail: 'Expedited available' },
-              { name: 'Summit', status: 'live' as const, detail: '48hr advance notice' },
-              { name: 'Routt', status: 'live' as const, detail: 'Online portal sync' },
-              { name: 'Broomfield', status: 'live' as const, detail: '48hr processing' },
-              { name: 'Clear Creek', status: 'live' as const, detail: '5-7 day processing' },
-              { name: 'Gilpin', status: 'live' as const, detail: '5-7 day processing' },
-              { name: 'Park', status: 'live' as const, detail: '3-5 day processing' },
-              { name: 'Teller', status: 'live' as const, detail: '24hr advance notice' },
-            ].map((county, i) => (
-              <Card key={i} className="p-4 text-center flex-shrink-0 w-40">
-                <h3 className="font-semibold mb-2">{county.name}</h3>
-                <div className="flex justify-center mb-2">
-                  <StatusChip status={county.status} />
-                </div>
-                <p className="text-xs text-[#5A6560]">{county.detail}</p>
-              </Card>
-            ))}
+            THE KNOWLEDGE LAYER
+          </div>
+          <h2
+            className="text-[#1A1F1C] mb-4"
+            style={{
+              fontSize: 'clamp(32px, 4vw, 40px)',
+              fontWeight: 700,
+            }}
+          >
+            Every county's rules, in one place — and growing.
+          </h2>
+          <p className="text-[#5A6560] max-w-2xl mx-auto mb-10">
+            Codes, cutoff times, and quirks for every supported Colorado county, with sub-jurisdiction depth as we
+            expand. Search your city or county and see for yourself.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-8 mb-10">
+            <div>
+              <div className="font-bold" style={{ fontSize: '40px', color: '#1A3D2B' }}>
+                {totalCounties}
+              </div>
+              <p className="text-[#5A6560] text-sm">Counties covered</p>
+            </div>
+            <div>
+              <div className="font-bold" style={{ fontSize: '40px', color: '#1A3D2B' }}>
+                {totalMunicipalities}
+              </div>
+              <p className="text-[#5A6560] text-sm">Municipalities covered</p>
+            </div>
+            <div>
+              <div className="font-bold" style={{ fontSize: '40px', color: '#4CAF70' }}>
+                {totalCounties + totalMunicipalities}+
+              </div>
+              <p className="text-[#5A6560] text-sm">Jurisdictions and growing</p>
+            </div>
           </div>
 
-          <div className="text-center">
-            <Link to="/jurisdictions" className="text-[#1A3D2B] hover:text-[#2D5A3D] font-semibold inline-flex items-center gap-2">
-              Don't see your county? Request it →
-            </Link>
-          </div>
+          <Link to="/jurisdictions">
+            <Button size="lg" className="bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]" style={{ fontWeight: 600 }}>
+              Check Your Jurisdiction
+            </Button>
+          </Link>
         </div>
       </section>
 
-      {/* Pricing Preview */}
-      <section className="bg-[#EEF4F0] py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2
-              className="text-[#1A1F1C] mb-4"
+      {/* Jurisdiction Database Access */}
+      <section className="bg-[#1A3D2B] text-white py-16 lg:py-20">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <div
+              className="uppercase tracking-wider mb-4"
               style={{
-                fontSize: 'clamp(32px, 4vw, 40px)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '13px',
+                color: '#4CAF70',
+                letterSpacing: '0.1em',
+              }}
+            >
+              THE CORE PRODUCT
+            </div>
+            <h2
+              style={{
+                fontSize: 'clamp(28px, 3.5vw, 36px)',
                 fontWeight: 700,
               }}
             >
-              Simple pricing that scales with your business.
+              Jurisdiction Database Access
             </h2>
+            <p className="text-white/70 max-w-2xl mx-auto mt-4" style={{ lineHeight: 1.6 }}>
+              Know what every Colorado jurisdiction requires, in one place.
+            </p>
+          </div>
+
+          <Card className="bg-white text-[#1A1F1C] p-8 lg:p-10 rounded-xl">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <Database className="w-5 h-5" style={{ color: '#1A3D2B' }} />
+                  <span className="text-sm font-semibold text-[#1A3D2B]">Database Access</span>
+                </div>
+                <div className="mb-4">
+                  <span className="text-5xl font-bold" style={{ color: '#1A1F1C' }}>
+                    $399
+                  </span>
+                  <span className="text-[#5A6560] text-lg">/mo</span>
+                </div>
+                <Link to="/pricing" className="block">
+                  <Button
+                    className="w-full bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]"
+                    style={{ fontWeight: 600 }}
+                  >
+                    See Full Pricing
+                  </Button>
+                </Link>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  'All supported Colorado counties',
+                  'Unlimited users, one flat price',
+                  'AI assistant for permitting questions',
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm">
+                    <CheckCircle2 className="w-5 h-5 text-[#4CAF70] flex-shrink-0 mt-0.5" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      {/* Permit, Inspection & Job Tracking Add-ons */}
+      <section className="bg-[#F7F8F6] py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h3
+              className="text-[#1A1F1C]"
+              style={{
+                fontSize: 'clamp(24px, 3vw, 32px)',
+                fontWeight: 700,
+              }}
+            >
+              Permit, Inspection &amp; Job Tracking — Add-ons
+            </h3>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -686,7 +701,6 @@ export function HomePage() {
                 period: '/mo',
                 features: [
                   '1 user, 50 active permits',
-                  '3 jurisdictions',
                   'Email alerts',
                   'Basic dashboard + CSV import',
                 ],
@@ -694,13 +708,13 @@ export function HomePage() {
               },
               {
                 name: 'Pro',
-                price: '$99',
+                price: '$149',
                 period: '/mo',
                 features: [
                   'Up to 5 users',
-                  'Unlimited permits, all jurisdictions',
-                  'AI import + cost leakage alerts',
-                  'Time tracking, job management',
+                  'Unlimited permits',
+                  'Advanced reminders',
+                  'AI-powered import',
                 ],
                 highlighted: true,
                 badge: 'Most Popular',
@@ -712,7 +726,7 @@ export function HomePage() {
                 features: [
                   'Unlimited users',
                   'Everything in Pro',
-                  'Role-based access control',
+                  'Time tracking & job management',
                   'Revenue and invoicing',
                 ],
                 highlighted: false,
@@ -767,7 +781,7 @@ export function HomePage() {
                     </Button>
                   </Link>
                 ) : (
-                  <a href="https://app.sasquatchpermit.com">
+                  <Link to="/coming-soon">
                     <Button
                       className={`w-full ${
                         plan.highlighted
@@ -775,16 +789,16 @@ export function HomePage() {
                           : 'bg-white text-[#1A3D2B] border border-[#1A3D2B] hover:bg-[#F7F8F6]'
                       }`}
                     >
-                      Get Started
+                      Request Early Access
                     </Button>
-                  </a>
+                  </Link>
                 )}
               </Card>
             ))}
           </div>
 
           <p className="text-center text-[#5A6560] text-sm">
-            All plans include a free trial. No credit card required.
+            Early access pricing shown above. No credit card required to request access.
           </p>
         </div>
       </section>
@@ -802,18 +816,18 @@ export function HomePage() {
             Ready to take back your time?
           </h2>
           <p className="text-white/70 text-lg mb-8">
-            Join contractors across Colorado who've eliminated permit chaos.
+            Be one of the first contractors in Colorado to know the rules before they cost you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://app.sasquatchpermit.com">
+            <Link to="/coming-soon">
               <Button
                 size="lg"
                 className="bg-white text-[#1A3D2B] hover:bg-gray-100"
                 style={{ fontWeight: 600 }}
               >
-                Start Free Trial
+                Request Early Access
               </Button>
-            </a>
+            </Link>
             <Link to="/contact">
               <Button
                 size="lg"

@@ -6,7 +6,6 @@ import { JurisdictionsPage } from "./pages/JurisdictionsPage";
 import { AboutPage } from "./pages/AboutPage";
 import { ContactPage } from "./pages/ContactPage";
 import { LoginPage } from "./pages/LoginPage";
-import { FeatureDetailPage } from "./pages/features/FeatureDetailPage";
 import { GovernancePage } from "./pages/GovernancePage";
 import { NewsletterPage } from "./pages/NewsletterPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
@@ -25,10 +24,6 @@ export const router = createBrowserRouter([
       {
         path: "/features",
         element: <FeaturesPage />,
-      },
-      {
-        path: "/features/:slug",
-        element: <FeatureDetailPage />,
       },
       {
         path: "/pricing",

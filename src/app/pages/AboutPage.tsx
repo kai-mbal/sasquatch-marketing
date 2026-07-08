@@ -13,19 +13,19 @@ export function AboutPage() {
       icon: Wrench,
       title: 'Simplicity',
       description:
-        'No training required. No enterprise bloat. Just the tools you need to manage permits and inspections without the chaos.',
+        'No training required. No enterprise bloat. Just a straight answer on what a jurisdiction requires, and the tools to track the permits and inspections that follow.',
     },
     {
       icon: Target,
       title: 'Reliability',
       description:
-        'Your permit data is too important to lose. We build systems that work every time, backed by secure infrastructure and daily backups.',
+        'Jurisdiction and permit data are too important to lose. Sasquatch runs on systems that work every time, backed by secure infrastructure and daily backups.',
     },
     {
       icon: Users,
       title: 'Contractor-First',
       description:
-        'We\'re not building for investors or accountants. We\'re building for the people in the field who need real answers, fast.',
+        'Not built for investors or accountants. Built for the people in the field who need real answers, fast.',
     },
   ];
 
@@ -45,7 +45,7 @@ export function AboutPage() {
               lineHeight: 1.1,
             }}
           >
-            Built because we lived the problem.
+            Built To Answer One Question: What Does This Jurisdiction Require?
           </h1>
           <p
             className="text-white/80 text-lg leading-relaxed"
@@ -53,9 +53,9 @@ export function AboutPage() {
               lineHeight: 1.7,
             }}
           >
-            Sasquatch was built by people who've spent too many hours on hold with county clerks, tracking down permit
-            status in 5 different portals, and missing inspection windows because someone forgot to write down a cutoff
-            time.
+            Sasquatch was built by someone who's spent too many hours on hold with county clerks, hunting for a
+            jurisdiction's requirements across five different portals, and missing inspection windows because nobody
+            wrote down the cutoff time.
           </p>
         </div>
       </section>
@@ -65,21 +65,20 @@ export function AboutPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <p className="text-[#1A1F1C] text-lg leading-relaxed mb-6">
-              We know what it's like to run a contracting business in Colorado. You're juggling permits across Denver,
-              El Paso County, Arapahoe, and Jefferson — each with their own portal, their own rules, their own
-              inspection cutoff times.
+              Running a contracting business in Colorado means guessing what a jurisdiction wants until you're already
+              on the job. Denver, El Paso County, Arapahoe, Jefferson — each with its own codes, its own portal, its
+              own inspection cutoff time, and nothing written down in one place.
             </p>
 
             <p className="text-[#1A1F1C] text-lg leading-relaxed mb-6">
-              You've got spreadsheets, sticky notes, calendar reminders, and a folder full of PDFs from 6 different
-              jurisdictions. Your crew is asking where they need to be tomorrow. Your client wants an update. The county
-              portal is down again.
+              Contractors end up finding out the hard way — from an inspector who just failed them, or a permit that
+              gets kicked back over a requirement nobody knew existed. Every jurisdiction is a black box until someone
+              calls it, and the next contractor has to figure it out all over again.
             </p>
 
             <p className="text-[#1A1F1C] text-lg leading-relaxed mb-6">
-              We built Sasquatch because we got tired of that chaos. We wanted one place to see every permit, every
-              inspection, every job — without logging into 5 different systems or digging through email threads to find
-              a confirmation number.
+              Sasquatch exists to close that gap: one place to check exactly what a jurisdiction requires before a
+              crew shows up, instead of after.
             </p>
 
             <div
@@ -90,18 +89,18 @@ export function AboutPage() {
                 lineHeight: 1.5,
               }}
             >
-              "We believe a contractor's time should be spent on the job — not on hold with a county clerk."
+              "A contractor's time should be spent on the job — not on hold with a county clerk."
             </div>
 
             <p className="text-[#1A1F1C] text-lg leading-relaxed mb-6">
-              So we built Sasquatch. A permit intelligence platform that knows how every Colorado county works, tracks
-              health status automatically, surfaces what needs attention today, and gets out of your way so you can do
-              the work that matters.
+              Sasquatch is a jurisdiction intelligence platform that knows how every Colorado county works — codes,
+              cutoff times, contacts, and quirks — and puts it in one searchable place. Permit, inspection, and job
+              tracking layer on top for teams that want them.
             </p>
 
             <p className="text-[#1A1F1C] text-lg leading-relaxed">
-              It's built for electrical contractors, plumbing crews, solar installers, and roofers. People who need real
-              tools, not enterprise software that takes 3 weeks to learn.
+              It's built for electrical contractors, plumbing crews, solar installers, and roofers. People who need a
+              straight answer, not enterprise software that takes 3 weeks to learn.
             </p>
           </div>
         </div>
@@ -117,31 +116,28 @@ export function AboutPage() {
               fontWeight: 700,
             }}
           >
-            Our Vision for Sasquatch
+            The Vision for Sasquatch
           </h2>
 
           <div className="space-y-6">
             <p className="text-[#1A1F1C] text-lg leading-relaxed">
-              Our ultimate goal is to transform Sasquatch into a comprehensive command center for contractors — a
-              single platform where you can not only track permits and inspections, but schedule them, file for new
-              permits, communicate with jurisdictions, and manage every aspect of your permitting operations without
-              leaving the application.
+              The long-term goal is for Sasquatch to be the definitive source of jurisdiction knowledge in
+              Colorado — the place a contractor checks first, before a bid, before a permit, before a truck leaves
+              the yard.
             </p>
 
             <p className="text-[#1A1F1C] text-lg leading-relaxed">
-              We're transparent about the challenges ahead. To enable in-app permit filing and inspection scheduling,
-              we need direct API integration with government systems. This requires establishing formal partnerships
-              with jurisdictions across Colorado, navigating complex security protocols, and securing permissions that
-              typically demand extensive collaboration with government IT departments and regulatory bodies. It's a
-              significant undertaking that will take time, persistence, and careful relationship-building.
+              Deeper integration — in-app permit filing, live inspection scheduling — will eventually require direct
+              API access to government systems. That means formal partnerships with jurisdictions across Colorado,
+              navigating complex security protocols, and securing permissions that typically demand extensive
+              collaboration with government IT departments and regulatory bodies. It's a significant undertaking
+              that will take time, persistence, and careful relationship-building.
             </p>
 
             <p className="text-[#1A1F1C] text-lg leading-relaxed">
-              Despite these obstacles, we're committed to pursuing this vision. We believe contractors deserve better
-              tools, and we're willing to do the hard work required to build them. While we work toward these deeper
-              integrations, we'll continue shipping features that solve real problems today — smarter tracking,
-              better alerts, jurisdiction-specific intelligence, and workflow automation that saves time on every
-              project.
+              That hasn't changed the plan. Contractors deserve a real source of truth for permitting, and getting
+              there is worth the work. In the meantime, the jurisdiction database keeps growing — more counties, more
+              detail, and more of the day-to-day knowledge that used to live only in a veteran field manager's head.
             </p>
 
             <div
@@ -149,21 +145,20 @@ export function AboutPage() {
             >
               <p
                 className="text-[#1A1F1C] text-lg font-semibold"
-               
+
               >
-                Sasquatch will evolve alongside our users.
+                Sasquatch will evolve alongside the contractors who use it.
               </p>
               <p className="text-[#5A6560] mt-2">
-                As our user base grows, so will our feature set, our jurisdiction coverage, and our ability to
-                advocate for better contractor tools across Colorado's permitting ecosystem. Every contractor who
-                joins Sasquatch makes the platform stronger and brings us closer to the full-service command center
-                we're building toward.
+                As more contractors rely on Sasquatch, the jurisdiction coverage grows, the detail gets sharper, and
+                the case for jurisdictions to work directly with the platform gets stronger. Every contractor who
+                joins makes the database more useful for the next one.
               </p>
             </div>
 
             <p className="text-[#1A1F1C] text-lg leading-relaxed">
-              This is a multi-year journey, and we're in it for the long haul. If you're a contractor who's tired of
-              the status quo and wants to be part of building something better, we'd love to have you with us.
+              This is a multi-year effort. If you're a contractor who's tired of guessing what a jurisdiction wants,
+              there's a place for you here.
             </p>
           </div>
         </div>
@@ -182,7 +177,7 @@ export function AboutPage() {
             About Sasquatch Analytics
           </h2>
           <p className="text-[#5A6560] text-lg mb-4">
-            Sasquatch Permit Intelligence is built and operated by{' '}
+            Sasquatch is built and operated by{' '}
             <a
               href="https://sasquatchanalytics.io"
               target="_blank"
@@ -191,11 +186,11 @@ export function AboutPage() {
             >
               Sasquatch Analytics
             </a>, a Colorado-based
-            software company focused on field operations tools.
+            software company focused on jurisdiction data and field operations tools.
           </p>
           <p className="text-[#5A6560]">
-            We're a small team that understands the trade contractor space. We build tools that solve real problems, not
-            software that looks good in investor decks.
+            It's a solo operation right now, built by someone who understands the trade contractor space and builds
+            tools that solve real problems, not software that looks good in an investor deck.
           </p>
         </div>
       </section>
@@ -210,7 +205,7 @@ export function AboutPage() {
               fontWeight: 700,
             }}
           >
-            Our Values
+            Values
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -274,18 +269,19 @@ export function AboutPage() {
               </p>
               <p className="text-[#5A6560] mb-4" style={{ lineHeight: 1.8 }}>
                 Sasquatch started with a conversation. A close friend who runs an electrical
-                contracting business kept venting about the same thing — hours lost to permit
-                paperwork, missed inspection windows, and juggling different jurisdiction portals.
-                As a machine learning engineer, I knew there had to be a better way.
+                contracting business kept venting about the same thing: never knowing what a
+                jurisdiction actually required until it was too late, plus missed inspection
+                windows and juggling different portals. As an AI engineer, I knew
+                there had to be a better way.
               </p>
               <p className="text-[#5A6560] mb-4" style={{ lineHeight: 1.8 }}>
                 I built Sasquatch because I care about solving real problems for real people.
                 Construction is an industry that keeps the world running, and the people in it
-                deserve tools that actually work for them — not against them.
+                deserve tools that actually work for them, not against them.
               </p>
               <p className="text-[#5A6560] mb-5" style={{ lineHeight: 1.8 }}>
                 Every feature in Sasquatch is shaped by direct feedback from contractors in my
-                network. I'm not building in a vacuum — I'm building alongside the people who
+                network. I'm not building in a vacuum. I'm building alongside the people who
                 use it every day.
               </p>
               <a
@@ -315,7 +311,7 @@ export function AboutPage() {
             Want to learn more?
           </h2>
           <p className="text-white/70 text-lg mb-8">
-            Get in touch with our team or start a free trial today.
+            Get in touch or explore pricing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">

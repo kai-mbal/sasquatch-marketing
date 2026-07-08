@@ -82,7 +82,7 @@ export function ContactPage() {
               lineHeight: 1.1,
             }}
           >
-            Let's talk permits.
+            Let's talk counties.
           </h1>
           <p
             className="text-[#5A6560] text-lg max-w-2xl mx-auto"
@@ -329,16 +329,16 @@ export function ContactPage() {
             Not ready to talk yet?
           </h2>
           <p className="text-[#5A6560] mb-6">
-            Start a free trial and explore the platform on your own. No sales call required.
+            Request early access and we'll reach out personally. No sales call required unless you want one.
           </p>
-          <a href="https://app.sasquatchpermit.com">
+          <Link to="/coming-soon">
             <Button
               className="bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]"
               style={{ fontWeight: 600 }}
             >
-              Start Free Trial
+              Request Early Access
             </Button>
-          </a>
+          </Link>
         </div>
       </section>
 

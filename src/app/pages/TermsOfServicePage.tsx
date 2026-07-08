@@ -42,7 +42,7 @@ export function TermsOfServicePage() {
                 1. Agreement to Terms
               </h2>
               <p className="text-[#5A6560] leading-relaxed">
-                By accessing or using Sasquatch Permit Intelligence ("Service," "we," "us"), you agree to be bound by
+                By accessing or using Sasquatch ("Service," "we," "us"), you agree to be bound by
                 these Terms of Service ("Terms"). If you are using the Service on behalf of an organization, you
                 represent that you have authority to bind that organization. If you do not agree to these Terms, do not
                 use the Service.
@@ -61,7 +61,7 @@ export function TermsOfServicePage() {
                 2. Description of the Service
               </h2>
               <p className="text-[#5A6560] leading-relaxed">
-                Sasquatch Permit Intelligence is a software platform that helps contractor organizations manage building
+                Sasquatch is a software platform that helps contractor organizations manage building
                 permits, inspections, reminders, documents, and related workflows. The Service may include: permit and
                 job tracking; document storage and uploads; email ingestion and notifications; AI-assisted features such
                 as permit data extraction, import mapping, materials lists and cost estimates, and job triage; expense

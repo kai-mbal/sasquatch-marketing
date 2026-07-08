@@ -13,20 +13,15 @@ export function Footer() {
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img
                 src="/sasquatch-logo.jpeg"
-                alt="Sasquatch Permit Intelligence"
+                alt="Sasquatch"
                 className="w-10 h-10 rounded-lg object-cover"
               />
-              <div className="flex flex-col">
-                <span className="font-bold text-lg">
-                  Sasquatch
-                </span>
-                <span className="text-xs text-white/70">
-                  Permit Intelligence
-                </span>
-              </div>
+              <span className="font-bold text-lg">
+                Sasquatch
+              </span>
             </Link>
             <p className="text-white/70 text-sm">
-              Built for Colorado contractors who want to eliminate permit chaos.
+              Built for Colorado contractors who want to know the rules before they break them.
             </p>
           </div>
 
@@ -70,11 +65,6 @@ export function Footer() {
                   Contact
                 </Link>
               </li>
-              <li>
-                <Link to="/newsletter" className="text-white/70 hover:text-white text-sm transition-colors">
-                  Newsletter
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -106,7 +96,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/60 text-sm">
-            © {currentYear} Sasquatch Permit Intelligence by{' '}
+            © {currentYear} Sasquatch by{' '}
             <a
               href="https://sasquatchanalytics.io"
               target="_blank"

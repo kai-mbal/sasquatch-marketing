@@ -61,7 +61,7 @@ export function ComingSoonPage() {
               letterSpacing: '0.1em',
             }}
           >
-            LAUNCHING SOON
+            EARLY ACCESS
           </div>
 
           <h1
@@ -72,7 +72,7 @@ export function ComingSoonPage() {
               lineHeight: 1.1,
             }}
           >
-            We're almost ready.
+            Request Early Access
           </h1>
 
           <p
@@ -81,9 +81,8 @@ export function ComingSoonPage() {
               lineHeight: 1.6,
             }}
           >
-            Sasquatch Permit Intelligence is launching before{' '}
-            <span className="text-white font-semibold">April 1, 2026</span>.
-            Be the first to know when we go live.
+            Sasquatch is built and ready for a founding cohort of Colorado contractors. Request access below and
+            we'll reach out personally to get you set up.
           </p>
         </div>
       </section>
@@ -103,10 +102,10 @@ export function ComingSoonPage() {
                   className="text-xl mb-2"
                   style={{ fontWeight: 700, color: '#1A1F1C' }}
                 >
-                  You're on the list!
+                  Request received!
                 </h3>
                 <p className="text-sm mb-6" style={{ color: '#5A6560' }}>
-                  We'll email you as soon as Sasquatch is live. Keep an eye on your inbox.
+                  We'll reach out personally to get you set up. Keep an eye on your inbox.
                 </p>
                 <Link to="/features">
                   <Button
@@ -125,11 +124,11 @@ export function ComingSoonPage() {
                   <h3
                     style={{ fontWeight: 700, color: '#1A1F1C', fontSize: '18px' }}
                   >
-                    Get notified at launch
+                    Request early access
                   </h3>
                 </div>
                 <p className="text-sm mb-6" style={{ color: '#5A6560' }}>
-                  Enter your email and we'll let you know the moment you can sign up.
+                  Enter your email and we'll reach out personally to get you set up.
                 </p>
                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                   <input
@@ -147,7 +146,7 @@ export function ComingSoonPage() {
                     className="bg-[#1A3D2B] text-white hover:bg-[#2D5A3D] shrink-0"
                     style={{ fontWeight: 600 }}
                   >
-                    {isSubmitting ? 'Sending...' : 'Notify Me'}
+                    {isSubmitting ? 'Sending...' : 'Request Access'}
                   </Button>
                 </form>
                 {submitError && (
@@ -157,7 +156,7 @@ export function ComingSoonPage() {
                 )}
                 {!submitError && (
                   <p className="text-xs mt-3" style={{ color: '#5A6560' }}>
-                    No spam. Just a single launch notification.
+                    No spam. We'll reach out to set up your access.
                   </p>
                 )}
               </>
@@ -177,7 +176,7 @@ export function ComingSoonPage() {
               color: '#1A1F1C',
             }}
           >
-            What you'll get at launch
+            What you'll get
           </h2>
 
           <div className="grid sm:grid-cols-2 gap-6">

@@ -19,7 +19,7 @@ export function GovernancePage() {
       icon: Shield,
       title: 'We Detect and Redact PII',
       description:
-        'Before any AI processing happens, Sasquatch uses AWS Textract to automatically detect and redact all personally identifiable information (PII). This includes SSNs, driver\'s license numbers, credit card numbers, and other sensitive data.',
+        'Before any AI processing happens, Sasquatch automatically detects and redacts all personally identifiable information (PII). This includes SSNs, driver\'s license numbers, credit card numbers, and other sensitive data.',
     },
     {
       icon: Database,
@@ -46,7 +46,7 @@ export function GovernancePage() {
       icon: Lock,
       title: 'Privacy by Design',
       description:
-        'Every feature is built with privacy as the default. We redact PII before AI processing, encrypt data at rest and in transit, and follow AWS security best practices.',
+        'Every feature is built with privacy as the default. We redact PII before AI processing, encrypt data at rest and in transit, and follow industry security best practices.',
     },
     {
       icon: Eye,
@@ -340,7 +340,7 @@ export function GovernancePage() {
 
             <div className="space-y-4 text-[#1A1F1C]" style={{ lineHeight: 1.7 }}>
               <p>
-                Sasquatch Permit Intelligence will <strong>never sell your data</strong> to third parties. Your permits,
+                Sasquatch will <strong>never sell your data</strong> to third parties. Your permits,
                 jobs, documents, and business information are yours — not ours to monetize.
               </p>
               <p>
@@ -471,7 +471,7 @@ export function GovernancePage() {
                       fontWeight: 600,
                     }}
                   >
-                    AWS Security Best Practices
+                    Secure Cloud Infrastructure
                   </h3>
                   <p
                     className="text-[#5A6560]"
@@ -480,9 +480,8 @@ export function GovernancePage() {
                       lineHeight: 1.6,
                     }}
                   >
-                    Sasquatch is built on AWS infrastructure and follows AWS Well-Architected Framework guidelines. We use
-                    AWS Step Functions for secure workflow orchestration, AWS Textract for PII detection, and AWS Cognito
-                    for authentication.
+                    Sasquatch is built on secure, industry-standard cloud infrastructure and follows established
+                    security frameworks for workflow orchestration, PII detection, and authentication.
                   </p>
                 </div>
               </div>

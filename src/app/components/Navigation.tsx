@@ -3,6 +3,9 @@ import { Link, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 
+const LOGIN_URL = '/login';
+const REQUEST_ACCESS_URL = '/coming-soon';
+
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,7 +28,6 @@ export function Navigation() {
     { label: 'Features', href: '/features' },
     { label: 'Jurisdictions', href: '/jurisdictions' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Newsletter', href: '/newsletter' },
     { label: 'Governance', href: '/governance' },
     { label: 'About', href: '/about' },
   ];
@@ -42,17 +44,12 @@ export function Navigation() {
           <Link to="/" className="flex items-center gap-3">
             <img
               src="/sasquatch-logo.jpeg"
-              alt="Sasquatch Permit Intelligence"
+              alt="Sasquatch"
               className="w-10 h-10 lg:w-12 lg:h-12 rounded-lg object-cover"
             />
-            <div className="flex flex-col">
-              <span className="font-bold text-lg lg:text-xl">
-                Sasquatch
-              </span>
-              <span className="text-xs text-[#5A6560] hidden sm:block">
-                Permit Intelligence
-              </span>
-            </div>
+            <span className="font-bold text-lg lg:text-xl">
+              Sasquatch
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -71,7 +68,7 @@ export function Navigation() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="https://app.sasquatchpermit.com">
+            <Link to={LOGIN_URL}>
               <Button
                 variant="ghost"
                 className="border border-[#1A3D2B] text-[#1A3D2B] hover:bg-[#1A3D2B] hover:text-white"
@@ -79,15 +76,15 @@ export function Navigation() {
               >
                 Log In
               </Button>
-            </a>
-            <a href="https://app.sasquatchpermit.com">
+            </Link>
+            <Link to={REQUEST_ACCESS_URL}>
               <Button
                 className="bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]"
                 style={{ fontWeight: 600 }}
               >
-                Start Free Trial
+                Request Early Access
               </Button>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -115,7 +112,7 @@ export function Navigation() {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 pt-2 border-t border-[#ECEEED]">
-                <a href="https://app.sasquatchpermit.com">
+                <Link to={LOGIN_URL}>
                   <Button
                     variant="ghost"
                     className="w-full border border-[#1A3D2B] text-[#1A3D2B]"
@@ -123,15 +120,15 @@ export function Navigation() {
                   >
                     Log In
                   </Button>
-                </a>
-                <a href="https://app.sasquatchpermit.com">
+                </Link>
+                <Link to={REQUEST_ACCESS_URL}>
                   <Button
                     className="w-full bg-[#1A3D2B] text-white"
                     style={{ fontWeight: 600 }}
                   >
-                    Start Free Trial
+                    Request Early Access
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -4,6 +4,6 @@ export function usePageTitle(title?: string) {
   useEffect(() => {
     document.title = title
       ? `${title} — Sasquatch`
-      : 'Sasquatch — Permit Intelligence';
+      : 'Sasquatch';
   }, [title]);
 }

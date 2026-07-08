@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router';
-import { ExternalLink } from 'lucide-react';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -9,17 +7,6 @@ import { Button } from '../components/ui/button';
 
 export function LoginPage() {
   usePageTitle('Login');
-  useEffect(() => {
-    // Optional: Auto-redirect after a few seconds
-    // const timer = setTimeout(() => {
-    //   window.location.href = 'https://app.sasquatchrisk.com';
-    // }, 3000);
-    // return () => clearTimeout(timer);
-  }, []);
-
-  const handleLogin = () => {
-    window.location.href = 'https://app.sasquatchpermit.com';
-  };
 
   return (
     <div className="min-h-screen bg-[#F7F8F6] flex flex-col">
@@ -31,7 +18,7 @@ export function LoginPage() {
           <div className="flex justify-center mb-6">
             <img
               src="/sasquatch-logo.jpeg"
-              alt="Sasquatch Permit Intelligence"
+              alt="Sasquatch"
               className="w-16 h-16 rounded-xl object-cover"
             />
           </div>
@@ -43,7 +30,7 @@ export function LoginPage() {
               fontWeight: 700,
             }}
           >
-            Welcome Back
+            Sasquatch is in Early Access
           </h1>
 
           <p
@@ -52,35 +39,23 @@ export function LoginPage() {
               fontSize: '16px',
             }}
           >
-            Click below to access your Sasquatch Permit Intelligence dashboard.
+            Sasquatch isn't publicly self-serve yet. Existing early-access users should use the link they were
+            given directly. New here? Request access and we'll set you up personally.
           </p>
 
-          <Button
-            onClick={handleLogin}
-            className="w-full bg-[#1A3D2B] text-white hover:bg-[#2D5A3D] mb-4"
-            style={{ fontWeight: 600 }}
-          >
-            <ExternalLink className="w-4 h-4 mr-2" />
-            Go to App Login
-          </Button>
-
-          <div className="border-t border-[#ECEEED] pt-6 mt-6">
-            <p className="text-sm text-[#5A6560] mb-3">Don't have an account yet?</p>
-            <a href="https://app.sasquatchpermit.com">
-              <Button
-                variant="outline"
-                className="w-full border-[#1A3D2B] text-[#1A3D2B] hover:bg-[#F7F8F6]"
-                style={{ fontWeight: 600 }}
-              >
-                Start Free Trial
-              </Button>
-            </a>
-          </div>
+          <Link to="/coming-soon">
+            <Button
+              className="w-full bg-[#1A3D2B] text-white hover:bg-[#2D5A3D] mb-4"
+              style={{ fontWeight: 600 }}
+            >
+              Request Early Access
+            </Button>
+          </Link>
 
           <div className="mt-8 pt-6 border-t border-[#ECEEED]">
             <p className="text-xs text-[#5A6560]">
               Need help?{' '}
-              <a href="mailto:hello@sasquatchrisk.com" className="text-[#1A3D2B] hover:underline">
+              <a href="mailto:contact@sasquatchpermit.com" className="text-[#1A3D2B] hover:underline">
                 Contact Support
               </a>
             </p>
