@@ -1,5 +1,15 @@
 import { Link } from 'react-router';
-import { Shield, Lock, Eye, CheckCircle2, AlertTriangle, FileText, Database, RefreshCw } from 'lucide-react';
+import {
+  Shield,
+  Lock,
+  Eye,
+  CheckCircle2,
+  AlertTriangle,
+  FileText,
+  Database,
+  RefreshCw,
+  MessageSquare,
+} from 'lucide-react';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -17,15 +27,15 @@ export function GovernancePage() {
     },
     {
       icon: Shield,
-      title: 'We Detect and Redact PII',
+      title: 'We Detect and Redact Sensitive Data',
       description:
-        'Before any AI processing happens, Sasquatch automatically detects and redacts all personally identifiable information (PII). This includes SSNs, driver\'s license numbers, credit card numbers, and other sensitive data.',
+        'Before any AI processing happens, Sasquatch scans the file and replaces sensitive identifiers with markers — SSNs, driver\'s license numbers, credit card numbers, and similar values. Two layers run: a pattern-matching baseline that always executes, plus Amazon Comprehend\'s PII detection on top of it.',
     },
     {
       icon: Database,
-      title: 'Clean Data Goes to AI',
+      title: 'Redacted Data Goes to AI',
       description:
-        'Only the redacted, sanitized version of your document is sent to the AI model. The AI never sees your sensitive information — it only sees permit numbers, addresses, dates, and other non-sensitive fields needed to do its job.',
+        'Only the redacted copy of your document is sent to the AI model. It sees permit numbers, addresses, dates, and the other fields it needs to do its job — not the identifiers we stripped out.',
     },
     {
       icon: RefreshCw,
@@ -37,7 +47,7 @@ export function GovernancePage() {
       icon: CheckCircle2,
       title: 'Results Saved to Your Dashboard',
       description:
-        'The AI output is saved to your Sasquatch dashboard. You review the extracted data, verify accuracy, and use it to manage your permits and jobs. Your sensitive information stayed protected the entire time.',
+        'The AI output is saved to your Sasquatch dashboard. You review the extracted data, verify accuracy, and use it to manage your permits and jobs. Your original file stays in your account — only the redacted copy ever reached the model.',
     },
   ];
 
@@ -46,25 +56,25 @@ export function GovernancePage() {
       icon: Lock,
       title: 'Privacy by Design',
       description:
-        'Every feature is built with privacy as the default. We redact PII before AI processing, encrypt data at rest and in transit, and follow industry security best practices.',
+        'Privacy is the default, not a setting. We redact sensitive identifiers before AI processing, encrypt data at rest and in transit, and scope every service\'s permissions to only what it needs.',
     },
     {
       icon: Eye,
       title: 'Transparency',
       description:
-        'You should know exactly what happens to your data. We document our AI workflows, explain what data AI sees (and doesn\'t see), and give you control over your information.',
+        'You should know exactly what happens to your data — including where our protections stop. We document our AI workflows, state plainly what the AI sees and doesn\'t see, and tell you which features carry a confidence score and which don\'t.',
     },
     {
       icon: Shield,
       title: 'Human Verification',
       description:
-        'AI outputs are marked with a confidence percentage. We encourage you to verify AI-generated data before using it for critical decisions. AI is a tool to save you time, not a replacement for your judgment.',
+        'Where we can meaningfully score our own certainty, AI output carries a confidence percentage — and we say so when we can\'t. AI is a tool to save you time, not a replacement for your judgment.',
     },
     {
       icon: Database,
       title: 'Data Minimization',
       description:
-        'We only collect and process the data necessary to provide the service. If a field isn\'t needed for permit tracking or job management, we don\'t ask for it or store it.',
+        'We collect the data needed to run permit tracking and job management, and nothing we have no use for. Working files behind the AI pipeline expire on a schedule — import files after 30 days, materials files after 90.',
     },
   ];
 
@@ -89,13 +99,14 @@ export function GovernancePage() {
             AI Governance &amp; Data Protection
           </h1>
           <p
-            className="text-white/70 text-lg max-w-2xl mx-auto"
+            className="text-white/70 text-lg max-w-2xl mx-auto mb-6"
             style={{
               lineHeight: 1.6,
             }}
           >
             How Sasquatch protects your sensitive information and uses AI responsibly to save you time.
           </p>
+          <p className="text-white/50 text-sm">Last updated: September 9, 2026</p>
         </div>
       </section>
 
@@ -110,7 +121,7 @@ export function GovernancePage() {
                 fontWeight: 700,
               }}
             >
-              Your sensitive information is never fed to AI systems.
+              Sensitive identifiers are stripped before your documents reach an AI model.
             </h2>
             <p
               className="text-[#1A1F1C] text-lg text-center mb-6"
@@ -118,10 +129,9 @@ export function GovernancePage() {
                 lineHeight: 1.7,
               }}
             >
-              When you upload a document to Sasquatch, we automatically detect and redact all personally identifiable
-              information (PII) before any AI processing happens. Social security numbers, driver's license numbers,
-              credit card numbers, and other sensitive data are removed from the document before it reaches the AI
-              model.
+              When you upload a document to Sasquatch, we scan it and replace sensitive identifiers — social security
+              numbers, driver's license numbers, credit card numbers, and similar data — with placeholder markers before
+              any AI processing happens. The model receives the redacted copy, not your original file.
             </p>
             <p
               className="text-[#5A6560] text-center"
@@ -129,8 +139,9 @@ export function GovernancePage() {
                 lineHeight: 1.7,
               }}
             >
-              <strong style={{ color: '#1A1F1C' }}>You don't have to worry about it.</strong> Sasquatch has taken care
-              of it for you.
+              <strong style={{ color: '#1A1F1C' }}>Built to fail loudly, not silently.</strong> No automated detection
+              is perfect, so we run a pattern-matching baseline unconditionally on every document, layer Amazon
+              Comprehend on top of it, and alarm if that second layer ever stops working.
             </p>
           </Card>
         </div>
@@ -155,7 +166,7 @@ export function GovernancePage() {
                 lineHeight: 1.6,
               }}
             >
-              Here's what happens behind the scenes when you upload a document or use an AI-powered feature.
+              Here's what happens behind the scenes when you upload a document or import a file.
             </p>
           </div>
 
@@ -198,6 +209,46 @@ export function GovernancePage() {
               </div>
             ))}
           </div>
+
+          {/* Documents vs. chat */}
+          <Card className="p-6 lg:p-8 bg-white mt-12 border-l-4 border-l-[#4CAF70]">
+            <div className="flex items-start gap-4">
+              <MessageSquare className="w-6 h-6 text-[#1A3D2B] flex-shrink-0 mt-1" />
+              <div>
+                <h3
+                  className="text-[#1A1F1C] mb-3"
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: 600,
+                  }}
+                >
+                  Documents and chat features work differently — on purpose
+                </h3>
+                <p
+                  className="text-[#5A6560] mb-4"
+                  style={{
+                    fontSize: '15px',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  The five steps above describe document uploads and file imports, where bulk sensitive data actually
+                  arrives. Those paths run our full redaction set.
+                </p>
+                <p
+                  className="text-[#5A6560]"
+                  style={{
+                    fontSize: '15px',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  Chat and assistant features use a deliberately narrower set. Social security numbers and credit card
+                  numbers are redacted; email addresses, phone numbers, and permit, parcel, or case numbers are
+                  preserved — because answering a question about a county inspector's email or a specific permit number
+                  requires being able to see it. We'd rather tell you where the line sits than imply there isn't one.
+                </p>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
@@ -223,9 +274,9 @@ export function GovernancePage() {
                 lineHeight: 1.7,
               }}
             >
-              AI is powerful, but it's not perfect. Every AI-generated report or output in Sasquatch is paired with a{' '}
-              <strong style={{ color: '#1A1F1C' }}>confidence percentage</strong> that tells you how certain the AI is
-              about its results.
+              AI is powerful, but it's not perfect. Where Sasquatch can meaningfully score its own certainty — email
+              triage and jurisdiction answers — the result carries a{' '}
+              <strong style={{ color: '#1A1F1C' }}>confidence percentage</strong> telling you how sure the AI is.
             </p>
           </div>
 
@@ -240,7 +291,7 @@ export function GovernancePage() {
               Why confidence matters
             </h3>
             <p
-              className="text-[#5A6560] mb-6"
+              className="text-[#5A6560] mb-4"
               style={{
                 lineHeight: 1.7,
               }}
@@ -248,6 +299,15 @@ export function GovernancePage() {
               AI outputs the best information possible when given relevant, complete data. But if a document is unclear,
               poorly scanned, or missing key details, the AI's confidence will be lower. We show you that confidence
               score so you can make informed decisions.
+            </p>
+            <p
+              className="text-[#5A6560] mb-6"
+              style={{
+                lineHeight: 1.7,
+              }}
+            >
+              Not every feature carries one. Drafts, reports, and general chat responses don't produce a meaningful
+              confidence number, so we don't invent one — review those the same way you'd review a scored output.
             </p>
             <div className="bg-[#FFF3E0] border-l-4 border-[#C8821A] p-4 rounded">
               <p
@@ -350,13 +410,21 @@ export function GovernancePage() {
                 to participate.
               </p>
               <p>
-                We will <strong>never train AI models</strong> on your proprietary business data or use your documents to
-                improve third-party AI systems. The AI models we use are general-purpose tools that process your data to
-                serve you — not to learn from you and benefit others.
+                We <strong>do not train AI models</strong> on your business data. We access general-purpose models
+                through Amazon Bedrock, whose terms prohibit using your inputs or outputs to train the underlying
+                models, and we do not fine-tune or otherwise build models on your documents.
+              </p>
+              <p>
+                We <strong>do not track you across the web</strong>. This website sets no cookies, runs no analytics,
+                and loads no third-party tracking scripts.
               </p>
               <p className="text-[#5A6560] text-sm pt-4 border-t border-[#ECEEED]">
-                This commitment is part of our Terms of Service and Privacy Policy. If our practices ever change, we'll
-                notify you in advance and give you the option to export your data or close your account.
+                This commitment is part of our{' '}
+                <Link to="/terms" className="text-[#1A3D2B] underline hover:no-underline">
+                  Terms of Service
+                </Link>
+                . If our practices ever change, we'll notify you in advance. You can email us at any time to export your
+                data or close your account.
               </p>
             </div>
           </Card>
@@ -397,9 +465,9 @@ export function GovernancePage() {
                       lineHeight: 1.6,
                     }}
                   >
-                    All data is encrypted using industry-standard AES-256 encryption when stored and TLS 1.2+ when
-                    transmitted. Your documents and permit data are protected both in our database and when moving between
-                    systems.
+                    Stored data is encrypted with AES-256 server-side encryption across our document storage and
+                    database, and everything in transit uses TLS 1.2 or higher, enforced at both our API gateway and
+                    CDN. Your documents and permit data are protected in storage and when moving between systems.
                   </p>
                 </div>
               </div>
@@ -425,8 +493,8 @@ export function GovernancePage() {
                       lineHeight: 1.6,
                     }}
                   >
-                    You control who on your team can view, edit, or delete sensitive data. Assign roles (Admin, Manager,
-                    Field Crew) to limit access to financial information, cost data, and client details to only those who
+                    You control who on your team can view or change sensitive data. Assign roles (Admin, Manager,
+                    Read-only) to limit access to financial information, cost data, and client details to only those who
                     need it.
                   </p>
                 </div>
@@ -480,8 +548,9 @@ export function GovernancePage() {
                       lineHeight: 1.6,
                     }}
                   >
-                    Sasquatch is built on secure, industry-standard cloud infrastructure and follows established
-                    security frameworks for workflow orchestration, PII detection, and authentication.
+                    Sasquatch runs on Amazon Web Services, using managed services for authentication, storage, and AI
+                    processing, with each service's permissions scoped to only what it needs. We are not currently SOC 2
+                    or ISO 27001 certified — when that changes, we'll say so here rather than imply it.
                   </p>
                 </div>
               </div>

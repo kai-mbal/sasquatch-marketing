@@ -80,7 +80,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/governance" className="text-white/70 hover:text-white text-sm transition-colors">
+                <Link to="/privacy" className="text-white/70 hover:text-white text-sm transition-colors">
                   Privacy Policy
                 </Link>
               </li>

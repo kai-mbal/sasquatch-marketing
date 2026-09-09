@@ -9,6 +9,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { GovernancePage } from "./pages/GovernancePage";
 import { NewsletterPage } from "./pages/NewsletterPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
+import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
 import { NewsletterComingSoonPage } from "./pages/NewsletterComingSoonPage";
 import { ScrollToTopLayout } from "./components/ScrollToTop";
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "/terms",
         element: <TermsOfServicePage />,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicyPage />,
       },
       {
         path: "/contact",

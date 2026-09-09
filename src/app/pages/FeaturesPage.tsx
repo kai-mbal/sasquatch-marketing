@@ -56,11 +56,6 @@ function FeatureGroup({
 
 export function FeaturesPage() {
   usePageTitle('Features');
-  const integrations = [
-    { name: 'Google Calendar', status: 'Coming Soon' },
-    { name: 'QuickBooks', status: 'Coming Soon' },
-  ];
-
   const attentionCenter = allFeatures.find((f) => f.title === 'Attention Center')!;
   const permitFeatures = allFeatures.filter((f) => f.category === 'permit');
   const inspectionFeatures = allFeatures.filter((f) => f.category === 'inspection');
@@ -239,44 +234,11 @@ export function FeaturesPage() {
         </div>
       </section>
 
-      {/* Integration Section */}
-      <section className="bg-[#1A3D2B] text-white py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2
-              className="mb-4"
-              style={{
-                fontSize: 'clamp(32px, 4vw, 40px)',
-                fontWeight: 700,
-              }}
-            >
-              Integrations
-            </h2>
-            <p className="text-white/70 max-w-3xl mx-auto">
-              Connections to the tools you already use are on the way. Connect your accounting, project
-              management, and calendar systems.
-            </p>
-          </div>
-
-          <div className="flex justify-center gap-4 flex-wrap">
-            {integrations.map((integration, i) => (
-              <div key={i} className="bg-white/10 backdrop-blur rounded-lg p-6 text-center border border-white/20">
-                <Shield className="w-8 h-8 mx-auto mb-3 text-white/60" />
-                <h3 className="font-semibold mb-2">
-                  {integration.name}
-                </h3>
-                <span className="text-xs text-white/60 uppercase tracking-wider">{integration.status}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
-      <section className="bg-white py-16 lg:py-24">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+      <section className="bg-[#1A3D2B] text-white py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2
-            className="text-[#1A1F1C] mb-6"
+            className="mb-6"
             style={{
               fontSize: 'clamp(32px, 4vw, 40px)',
               fontWeight: 700,
@@ -284,14 +246,15 @@ export function FeaturesPage() {
           >
             See it in action
           </h2>
-          <p className="text-[#5A6560] text-lg mb-8">
-            Request early access. No credit card required.
+          <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto" style={{ lineHeight: 1.6 }}>
+            Every feature listed above is live in the product today. Want to see how it handles your
+            jurisdictions and your permits? We'll walk you through it. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/coming-soon">
               <Button
                 size="lg"
-                className="bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]"
+                className="bg-white text-[#1A3D2B] hover:bg-gray-100"
                 style={{ fontWeight: 600 }}
               >
                 Request Early Access
@@ -300,8 +263,8 @@ export function FeaturesPage() {
             <Link to="/pricing">
               <Button
                 size="lg"
-                variant="outline"
-                className="border-2 border-[#1A3D2B] text-[#1A3D2B] hover:bg-[#F7F8F6]"
+                variant="ghost"
+                className="border-2 border-white text-white hover:bg-white/10 hover:text-white"
                 style={{ fontWeight: 600 }}
               >
                 See Pricing

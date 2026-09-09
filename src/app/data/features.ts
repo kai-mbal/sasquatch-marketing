@@ -37,7 +37,7 @@ export const allFeatures: Feature[] = [
     icon: Activity,
     title: 'Permit Health Engine',
     description:
-      "Automatic health scoring for every permit. See at a glance what's healthy, at risk, or blocked before it becomes a problem.",
+      "Know which permits are healthy, at risk, or blocked before any of them turn into a delay. Every permit is scored automatically.",
     category: 'permit',
   },
   {
@@ -65,14 +65,14 @@ export const allFeatures: Feature[] = [
     icon: FileUp,
     title: 'Permit Upload (AI)',
     description:
-      'Upload a single permit PDF or image; AI extracts key fields and creates the permit record with PII redaction.',
+      'Drop in a single permit PDF or photo and get a finished permit record back. Sensitive identifiers are stripped before anything is processed.',
     category: 'permit',
   },
   {
     icon: Database,
     title: 'Import Pipeline & Scope Mapper',
     description:
-      'Upload a work order plus CSV. AI maps columns, normalizes data, and ties materials to jobs.',
+      'Bring a work order and spreadsheet in as-is. Columns get matched, values cleaned up, and materials tied to the right job — no reformatting first.',
     category: 'permit',
   },
   {
@@ -113,13 +113,13 @@ export const allFeatures: Feature[] = [
     icon: Users,
     title: 'Role-Based Access',
     description:
-      'Control who sees what. Assign roles to team members: Admin, Manager, Field Crew, or custom permissions.',
+      'Control who sees what. Assign each team member a role — Admin, Manager, or Read-only — to keep financial and client details limited to the people who need them.',
   },
   {
     icon: Bell,
     title: 'Notification Controls',
     description:
-      'Choose what you want to be notified about: email, SMS, or in-app. Turn off the noise, keep the signal.',
+      'Choose exactly what you get notified about, by email or in the app. Turn off the noise, keep the signal.',
   },
   {
     icon: MapPin,
@@ -131,7 +131,7 @@ export const allFeatures: Feature[] = [
     icon: UserCog,
     title: 'User Management (Admin)',
     description:
-      'Invite users, assign roles (Admin, Manager, Field Crew), and manage access from one place.',
+      'Invite users, assign roles (Admin, Manager, Read-only), and manage access from one place.',
   },
   {
     icon: Building2,
