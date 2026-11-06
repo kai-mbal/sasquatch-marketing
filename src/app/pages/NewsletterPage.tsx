@@ -91,7 +91,7 @@ export function NewsletterPage() {
               lineHeight: 1.5,
             }}
           >
-            Permit intelligence for Colorado contractors — delivered weekly
+            Permit and inspection news for Colorado contractors — delivered weekly
           </p>
 
           <p
@@ -101,7 +101,7 @@ export function NewsletterPage() {
               lineHeight: 1.6,
             }}
           >
-            Stay ahead of jurisdiction changes, inspection deadlines, and cost intelligence insights. Get the
+            Stay ahead of jurisdiction changes and inspection deadlines. Get the
             contractor-focused updates you actually need, every Tuesday at 7 AM.
           </p>
 
@@ -192,7 +192,7 @@ export function NewsletterPage() {
             What you'll get every week
           </h2>
           <p className="text-center text-[#5A6560] mb-12 max-w-2xl mx-auto">
-            No fluff. Just actionable permit intelligence to keep your jobs moving.
+            No fluff. Just practical permit updates to keep your jobs moving.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -225,10 +225,10 @@ export function NewsletterPage() {
                 <FileText className="w-7 h-7 text-[#1E6B40]" />
               </div>
               <h3 className="font-semibold text-lg mb-3 text-[#1A1F1C]">
-                Cost Intelligence Tips
+                Permit Process Tips
               </h3>
               <p className="text-[#5A6560] text-sm">
-                Real-world scenarios where contractors caught budget leaks before they became write-offs.
+                Practical notes on working with Colorado jurisdictions and keeping permits on track.
               </p>
             </Card>
           </div>
@@ -246,11 +246,9 @@ export function NewsletterPage() {
                 fontWeight: 700,
               }}
             >
-              Premium intelligence, contractor pricing
+              Newsletter pricing
             </h2>
-            <p className="text-[#5A6560] max-w-2xl mx-auto mb-3">
-              Less than 2 hours of crew time per month. Pay for itself with one avoided permit delay.
-            </p>
+            
             <p className="text-[#1A3D2B] font-semibold">
               First Tuesday issue free — 14-day trial
             </p>
@@ -317,7 +315,7 @@ export function NewsletterPage() {
                   {[
                     'Weekly Tuesday delivery',
                     'Jurisdiction updates',
-                    'Cost intelligence alerts',
+                    
                     'Deadline reminders',
                     'PDF archive access',
                   ].map((feature, i) => (
@@ -364,7 +362,7 @@ export function NewsletterPage() {
                   {[
                     'Weekly Tuesday delivery',
                     'Jurisdiction updates',
-                    'Cost intelligence alerts',
+                    
                     'Deadline reminders',
                     'PDF archive access',
                   ].map((feature, i) => (
@@ -393,98 +391,7 @@ export function NewsletterPage() {
               <p className="text-sm text-[#5A6560]">
                 30-day money back guarantee • Cancel anytime with one click
               </p>
-              <p className="text-xs text-[#5A6560]">
-                One missed inspection costs $500+ in idle crew time. This newsletter pays for itself.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sample Content Preview */}
-      <section className="bg-white py-16 lg:py-20">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2
-              className="text-[#1A1F1C] mb-4"
-              style={{
-                fontSize: 'clamp(28px, 4vw, 36px)',
-                fontWeight: 700,
-              }}
-            >
-              Recent newsletter topics
-            </h2>
-            <p className="text-[#5A6560]">
-              See what contractors are reading
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                date: 'Feb 18, 2026',
-                title: 'Denver Inspection Cutoff Changed to 3:00 PM',
-                excerpt:
-                  'Effective March 1st, Denver requires all same-day inspection requests by 3:00 PM instead of 3:30 PM. Here is what that means for your scheduling workflow.',
-              },
-              {
-                date: 'Feb 11, 2026',
-                title: 'El Paso County Portal Update: New Login Process',
-                excerpt:
-                  'El Paso County launched a modernized permit portal. We have updated Sasquatch to sync automatically — here is what changed and how to verify your connection.',
-              },
-              {
-                date: 'Feb 4, 2026',
-                title: 'Cost Leakage Case Study: $4,200 Caught on a $28K Job',
-                excerpt:
-                  'A roofing contractor in Jefferson County used cost intelligence alerts to spot material overruns mid-job. Here is how they recovered before close-out.',
-              },
-            ].map((issue, i) => (
-              <Card key={i} className="p-6 hover:shadow-md transition-shadow">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                  <h3 className="font-semibold text-lg text-[#1A1F1C] mb-2 sm:mb-0">
-                    {issue.title}
-                  </h3>
-                  <span
-                    className="text-[#5A6560] text-sm whitespace-nowrap"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    {issue.date}
-                  </span>
-                </div>
-                <p className="text-[#5A6560] text-sm">
-                  {issue.excerpt}
-                </p>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <a
-              href="#"
-              className="text-[#1A3D2B] hover:text-[#2D5A3D] font-semibold inline-flex items-center gap-2"
-             
-            >
-              Read a sample newsletter (PDF) →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof */}
-      <section className="bg-[#EEF4F0] py-12 lg:py-16">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-1 gap-8 text-center">
-            <div>
-              <div
-                className="text-4xl font-bold text-[#1A3D2B] mb-2"
-               
-              >
-                &lt;5 min
-              </div>
-              <p className="text-[#5A6560]">
-                Average read time
-              </p>
+              
             </div>
           </div>
         </div>
@@ -527,7 +434,7 @@ export function NewsletterPage() {
           </div>
           <p className="text-[#5A6560] text-sm">
             We respect your inbox. You'll receive exactly one email per week — no sponsored content, no affiliate
-            links, no promotional offers. Just permit intelligence.
+            links, no promotional offers. Just permit news.
           </p>
         </div>
       </section>
@@ -542,10 +449,10 @@ export function NewsletterPage() {
               fontWeight: 700,
             }}
           >
-            Join Your Contracting Peers
+            Get the Newsletter
           </h2>
           <p className="text-white/70 text-lg">
-            Get permit intelligence delivered to your inbox every Tuesday
+            Get permit and inspection news delivered to your inbox every Tuesday
           </p>
         </div>
       </section>

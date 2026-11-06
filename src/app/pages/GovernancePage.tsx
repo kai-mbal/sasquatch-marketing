@@ -23,7 +23,7 @@ export function GovernancePage() {
       icon: FileText,
       title: 'You Upload a Document',
       description:
-        'Upload any permit document, work order, invoice, or other file. This could contain sensitive information like social security numbers, license numbers, or personal addresses.',
+        'Upload any permit document, work order, or other file. This could contain sensitive information like social security numbers, license numbers, or personal addresses.',
     },
     {
       icon: Shield,
@@ -41,7 +41,7 @@ export function GovernancePage() {
       icon: RefreshCw,
       title: 'AI Normalizes and Extracts',
       description:
-        'The AI model reads the clean data, normalizes field values (e.g., standardizes dates, extracts permit numbers), and outputs structured information. This could be a permit record, a materials list, or cost estimates.',
+        'The AI model reads the clean data, normalizes field values (e.g., standardizes dates, extracts permit numbers), and outputs structured information. This could be a permit record or job details.',
     },
     {
       icon: CheckCircle2,
@@ -68,7 +68,7 @@ export function GovernancePage() {
       icon: Shield,
       title: 'Human Verification',
       description:
-        'Where we can meaningfully score our own certainty, AI output carries a confidence percentage — and we say so when we can\'t. AI is a tool to save you time, not a replacement for your judgment.',
+        'Where we can meaningfully score our own certainty, AI output carries a confidence percentage — and we say so when we can\'t. AI is a tool to help you, not a replacement for your judgment.',
     },
     {
       icon: Database,
@@ -104,9 +104,9 @@ export function GovernancePage() {
               lineHeight: 1.6,
             }}
           >
-            How Sasquatch protects your sensitive information and uses AI responsibly to save you time.
+            How Sasquatch protects your sensitive information and uses AI responsibly.
           </p>
-          <p className="text-white/50 text-sm">Last updated: September 9, 2026</p>
+          <p className="text-white/50 text-sm">Last updated: November 6, 2026</p>
         </div>
       </section>
 
@@ -317,9 +317,8 @@ export function GovernancePage() {
                   lineHeight: 1.6,
                 }}
               >
-                <strong>Use caution.</strong> Always review AI-generated data — especially materials lists, cost
-                estimates, or permit extractions — before relying on it for critical decisions, billing, or compliance.
-                AI is a tool to save you time, not a replacement for your expertise.
+                <strong>Use caution.</strong> Always review AI-generated data — especially permit extractions — before relying on it for critical decisions or compliance.
+                AI is a tool to help you, not a replacement for your expertise.
               </p>
             </div>
           </Card>
@@ -494,8 +493,7 @@ export function GovernancePage() {
                     }}
                   >
                     You control who on your team can view or change sensitive data. Assign roles (Admin, Manager,
-                    Read-only) to limit access to financial information, cost data, and client details to only those who
-                    need it.
+                    Read-only) to limit access to client details and other sensitive data to only those who need it.
                   </p>
                 </div>
               </div>

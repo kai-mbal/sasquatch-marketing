@@ -87,7 +87,7 @@ export function NewsletterComingSoonPage() {
               lineHeight: 1.6,
             }}
           >
-            The Sasquatch Report — weekly permit intelligence for Colorado contractors — launches before the{' '}
+            The Sasquatch Report — weekly permit and inspection news for Colorado contractors — launches before the{' '}
             <span className="text-white font-semibold">end of March 2026</span>.
             Pre-subscribe now and be first in line when we go live.
           </p>
@@ -223,12 +223,12 @@ export function NewsletterComingSoonPage() {
                 desc: 'Upcoming inspection windows, permit expirations, and jurisdiction-specific holidays.',
               },
               {
-                title: 'Cost Intelligence Tips',
-                desc: 'Real-world scenarios where contractors caught budget leaks before they became write-offs.',
+                title: 'Permit Process Tips',
+                desc: 'Practical notes on working with Colorado jurisdictions and keeping permits on track.',
               },
               {
                 title: 'Under 5 Minutes',
-                desc: 'No fluff. Just actionable permit intelligence to keep your jobs moving.',
+                desc: 'No fluff. Just practical permit updates to keep your jobs moving.',
               },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">

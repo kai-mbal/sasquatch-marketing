@@ -10,14 +10,20 @@ import { Textarea } from '../components/ui/textarea';
 import { JurisdictionSearch } from '../components/JurisdictionSearch';
 import { ColoradoCountyMap } from '../components/ColoradoCountyMap';
 import { CoverageCounter } from '../components/CoverageCounter';
-import { jurisdictionRegions, totalCounties, totalMunicipalities } from '../data/jurisdictions';
+import {
+  COVERAGE_STATEMENT,
+  VERIFY_NOTE,
+  jurisdictionRegions,
+  totalCounties,
+  totalMunicipalities,
+} from '../data/jurisdictions';
 
 const API_URL = '/api/submit';
 
 const countySlug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export function JurisdictionsPage() {
-  usePageTitle('Jurisdictions');
+  usePageTitle('Jurisdictions', COVERAGE_STATEMENT);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -85,7 +91,7 @@ export function JurisdictionsPage() {
               lineHeight: 1.1,
             }}
           >
-            Is your jurisdiction covered?
+            Is your jurisdiction supported?
           </h1>
           <p
             className="text-white/70 text-lg max-w-2xl mx-auto mb-10"
@@ -93,8 +99,7 @@ export function JurisdictionsPage() {
               lineHeight: 1.6,
             }}
           >
-            Search for the city or county where you work. If it's not covered yet, tell us — we're expanding
-            every week.
+            Search for the city or county where you work. {COVERAGE_STATEMENT}
           </p>
           <JurisdictionSearch onRequestJurisdiction={handleRequestJurisdiction} />
         </div>
@@ -111,10 +116,10 @@ export function JurisdictionsPage() {
                 fontWeight: 700,
               }}
             >
-              Every county we cover, at a glance.
+              Supported counties at a glance.
             </h2>
             <p className="text-[#5A6560] max-w-2xl mx-auto">
-              Hover a county to see how deep our coverage goes. Click one to jump to its cities below.
+              Hover a county to see what is supported. Click one to jump to its listing below.
             </p>
           </div>
           <ColoradoCountyMap onSelectCounty={handleSelectCounty} />
@@ -125,6 +130,7 @@ export function JurisdictionsPage() {
       <section className="py-16 lg:py-20 bg-[#F7F8F6]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <CoverageCounter counties={totalCounties} municipalities={totalMunicipalities} />
+          <p className="text-[#5A6560] text-sm text-center max-w-2xl mx-auto mt-10">{VERIFY_NOTE}</p>
         </div>
       </section>
 
@@ -142,7 +148,7 @@ export function JurisdictionsPage() {
               Browse by region
             </h2>
             <p className="text-[#5A6560] max-w-2xl mx-auto">
-              Every supported county and the municipalities within it.
+              Every supported county and municipality.
             </p>
           </div>
 
@@ -161,6 +167,11 @@ export function JurisdictionsPage() {
                       <h4 className="font-semibold mb-3" style={{ color: '#1A1F1C' }}>
                         {county.name}
                       </h4>
+                      {county.isCountySupported === false && (
+                        <p className="text-xs mb-3" style={{ color: '#5A6560' }}>
+                          County itself not yet supported
+                        </p>
+                      )}
                       {county.municipalities.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
                           {county.municipalities.map((m) => (
@@ -175,10 +186,10 @@ export function JurisdictionsPage() {
                         </div>
                       ) : (
                         <span
-                          className="text-xs px-2.5 py-1 rounded-full"
+                          className="self-start text-xs px-2.5 py-1 rounded-full"
                           style={{ backgroundColor: '#E6F4EC', color: '#1E6B40' }}
                         >
-                          Consolidated city &amp; county
+                          {county.isConsolidated ? 'Consolidated city & county' : 'County'}
                         </span>
                       )}
                     </Card>
@@ -204,7 +215,7 @@ export function JurisdictionsPage() {
               Request a Jurisdiction
             </h2>
             <p className="text-[#5A6560]">
-              Don't see your city or county? Let us know and we'll prioritize adding it.
+              Don't see your city or county? Request it here. More jurisdictions are added based on customer need.
             </p>
           </div>
 
@@ -284,7 +295,7 @@ export function JurisdictionsPage() {
 
               {submitStatus === 'success' && (
                 <p className="text-sm text-[#4CAF70] text-center font-medium mt-4">
-                  Request submitted! We'll look into adding this jurisdiction.
+                  Request submitted. Thanks for letting Sasquatch know.
                 </p>
               )}
               {submitStatus === 'error' && (

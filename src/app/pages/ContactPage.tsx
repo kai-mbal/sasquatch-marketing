@@ -19,7 +19,10 @@ import {
 const API_URL = '/api/submit';
 
 export function ContactPage() {
-  usePageTitle('Contact');
+  usePageTitle(
+    'Book a Demo',
+    'Send a message to set up a 20-minute walkthrough of Sasquatch for your jobs, permits, and inspections.'
+  );
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -82,7 +85,7 @@ export function ContactPage() {
               lineHeight: 1.1,
             }}
           >
-            Let's talk counties.
+            Book a 20-minute demo
           </h1>
           <p
             className="text-[#5A6560] text-lg max-w-2xl mx-auto"
@@ -90,8 +93,8 @@ export function ContactPage() {
               lineHeight: 1.6,
             }}
           >
-            Tell us what you're working with. We'll show you what you're missing.
-            Schedule a live demo or reach out with questions — we're here to help.
+            Send a message about what you're working with, and I'll follow up to set a time. Questions are welcome
+            too.
           </p>
         </div>
       </section>
@@ -109,7 +112,7 @@ export function ContactPage() {
                     fontWeight: 700,
                   }}
                 >
-                  Tell us what you're working with. We'll show you what you're missing.
+                  Tell me about your jobs, permits, and inspections.
                 </h2>
 
                 <div className="space-y-6 mb-8">
@@ -152,16 +155,16 @@ export function ContactPage() {
                     <div>
                       <h3 className="font-semibold mb-1">Response Time</h3>
                       <p className="text-white/80 text-sm">
-                        We typically respond within 24-48 business hours
+                        Typical response within 24-48 business hours
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="border-t border-white/20 pt-8">
-                  <h3 className="font-semibold mb-3">Want a live demo? →</h3>
+                  <h3 className="font-semibold mb-3">Want a walkthrough? →</h3>
                   <p className="text-white/70 text-sm mb-4">
-                    Use the form to request a walkthrough — we'll schedule a 15-minute live demo with your team.
+                    Use the form to request one, and I'll follow up to set up a 20-minute walkthrough with your team.
                   </p>
                 </div>
               </Card>
@@ -297,7 +300,7 @@ export function ContactPage() {
 
                   {submitStatus === 'success' && (
                     <p className="text-sm text-[#4CAF70] text-center font-medium">
-                      Message sent! We'll get back to you within 24–48 hours.
+                      Message sent! Expect a reply within 24–48 hours.
                     </p>
                   )}
                   {submitStatus === 'error' && (
@@ -329,7 +332,7 @@ export function ContactPage() {
             Not ready to talk yet?
           </h2>
           <p className="text-[#5A6560] mb-6">
-            Request early access and we'll reach out personally. No sales call required unless you want one.
+            Request early access and I'll reach out personally. No sales call required unless you want one.
           </p>
           <Link to="/coming-soon">
             <Button

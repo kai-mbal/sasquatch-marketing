@@ -40,7 +40,7 @@ export function LoginPage() {
             }}
           >
             Sasquatch isn't publicly self-serve yet. Existing early-access users should use the link they were
-            given directly. New here? Request access and we'll set you up personally.
+            given directly. New here? Request access and I'll set you up personally.
           </p>
 
           <Link to="/coming-soon">

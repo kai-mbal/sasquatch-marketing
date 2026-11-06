@@ -55,7 +55,7 @@ export function CoverageCounter({ counties, municipalities, onDark = false }: Co
         >
           <CountUp target={counties} />
         </div>
-        <p className="text-sm" style={{ color: labelColor }}>Counties covered</p>
+        <p className="text-sm" style={{ color: labelColor }}>Counties supported</p>
       </div>
       <div>
         <div
@@ -64,16 +64,16 @@ export function CoverageCounter({ counties, municipalities, onDark = false }: Co
         >
           <CountUp target={municipalities} />
         </div>
-        <p className="text-sm" style={{ color: labelColor }}>Municipalities covered</p>
+        <p className="text-sm" style={{ color: labelColor }}>Municipalities supported</p>
       </div>
       <div className="col-span-2 sm:col-span-1">
         <div
           className="font-bold mb-1"
           style={{ fontSize: 'clamp(40px, 6vw, 64px)', color: '#4CAF70' }}
         >
-          <CountUp target={counties + municipalities} suffix="+" />
+          <CountUp target={counties + municipalities} />
         </div>
-        <p className="text-sm" style={{ color: labelColor }}>Jurisdictions and growing</p>
+        <p className="text-sm" style={{ color: labelColor }}>Supported jurisdictions</p>
       </div>
     </div>
   );

@@ -2,12 +2,20 @@ import { useEffect, useRef, useState } from 'react';
 // Base map: "Map of Colorado counties, blank.svg" by David Benbennick, Wikimedia Commons, public domain.
 import mapSvg from '../../assets/maps/colorado-counties.svg?raw';
 import { jurisdictionRegions, supportedCountySvgIds } from '../data/jurisdictions';
+import type { SupportedCounty } from '../data/jurisdictions';
 
 interface ColoradoCountyMapProps {
   onSelectCounty?: (countyName: string) => void;
 }
 
 const countyBySvgId = new Map(jurisdictionRegions.flatMap((r) => r.counties.map((c) => [c.svgId, c])));
+
+function coverageLabel(county: SupportedCounty) {
+  const count = county.municipalities.length;
+  const municipalities = `${count} ${count === 1 ? 'municipality' : 'municipalities'} supported`;
+  if (county.isCountySupported === false) return `County not supported, ${municipalities}`;
+  return count > 0 ? `County and ${municipalities}` : 'County supported';
+}
 
 const SUPPORTED_FILL = '#B7E0C4';
 const SUPPORTED_FILL_HOVER = '#4CAF70';
@@ -87,11 +95,7 @@ export function ColoradoCountyMap({ onSelectCounty }: ColoradoCountyMapProps) {
           >
             <div className="font-semibold">{hoveredCounty ? hoveredCounty.name : hovered.svgId}</div>
             <div className="text-xs text-white/70">
-              {hoveredCounty
-                ? `${hoveredCounty.municipalities.length} ${
-                    hoveredCounty.municipalities.length === 1 ? 'municipality' : 'municipalities'
-                  } covered`
-                : 'Not yet covered — request it below'}
+              {hoveredCounty ? coverageLabel(hoveredCounty) : 'Not yet supported — request it below'}
             </div>
           </div>
         )}
@@ -104,7 +108,7 @@ export function ColoradoCountyMap({ onSelectCounty }: ColoradoCountyMapProps) {
         </div>
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-sm inline-block" style={{ backgroundColor: UNSUPPORTED_FILL }} />
-          <span className="text-[#5A6560]">Not yet covered</span>
+          <span className="text-[#5A6560]">Not yet supported</span>
         </div>
       </div>
     </div>

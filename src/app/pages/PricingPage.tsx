@@ -1,159 +1,71 @@
-import { useState } from 'react';
 import { Link } from 'react-router';
-import { CheckCircle2, Database } from 'lucide-react';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
+import { PlanCards } from '../components/PlanCards';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { Button } from '../components/ui/button';
-import { Card } from '../components/ui/card';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '../components/ui/accordion';
+import { COVERAGE_STATEMENT, VERIFY_NOTE } from '../data/jurisdictions';
+import { EARLY_ACCESS_NOTE } from '../data/plans';
+
+const FAQS = [
+  {
+    question: 'Is there a free trial?',
+    answer:
+      'Sasquatch is currently in early access rather than open self-serve signup. Book a demo and your account gets set up personally.',
+  },
+  {
+    question: 'What is the difference between Team and Company?',
+    answer:
+      'The number of users. Team covers up to 5 users, and Company covers unlimited users. Both plans include the same jobs, permits, inspections, reminders, and jurisdiction lookup.',
+  },
+  {
+    question: 'Can I import my existing permits?',
+    answer:
+      'Yes. Bring them in from a CSV or Excel file, or upload a PDF, image, or Word document. Review the details after import to make sure they came through correctly.',
+  },
+  {
+    question: 'Which jurisdictions are supported?',
+    answer: `${COVERAGE_STATEMENT} The full list is on the Jurisdictions page, where you can also request yours.`,
+  },
+  {
+    question: 'Can I rely on the local requirements in Sasquatch?',
+    answer: `Use them as a starting point. ${VERIFY_NOTE}`,
+  },
+  {
+    question: 'Does Sasquatch file permits or schedule inspections for me?',
+    answer:
+      'No. Sasquatch helps you track permits and inspections. Filing and scheduling still happen through each jurisdiction, and Sasquatch does not connect to jurisdiction portals.',
+  },
+  {
+    question: 'How does billing work?',
+    answer:
+      'Plans are priced monthly. During early access, accounts are set up personally, and there is no self-serve checkout yet.',
+  },
+  {
+    question: 'Can I switch plans later?',
+    answer: 'Yes. Send a message through the Contact page to move between Team and Company.',
+  },
+  {
+    question: 'What if my company has custom needs?',
+    answer: 'Enterprise is for larger companies with custom needs. Send a message through the Contact page to talk it through.',
+  },
+  {
+    question: 'What kind of support do you provide?',
+    answer: 'All plans include email support.',
+  },
+];
 
 export function PricingPage() {
-  usePageTitle('Pricing');
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly');
-
-  const databaseAccess = {
-    name: 'Jurisdiction Database Access',
-    monthlyPrice: 399,
-    annualPrice: 3830,
-    period: billingPeriod === 'monthly' ? '/mo' : '/yr',
-    features: [
-      'All supported Colorado counties — more added regularly',
-      'Unlimited users at your company',
-      'Codes, cutoff times, contacts, and quirks in one place',
-      'AI assistant answers permitting questions in plain language',
-      'Search any city or county to check coverage instantly',
-    ],
-  };
-
-  const plans: {
-    name: string;
-    monthlyPrice: number;
-    annualPrice: number;
-    period: string;
-    features: string[];
-    highlighted: boolean;
-    badge?: string;
-    contactUs?: boolean;
-  }[] = [
-    {
-      name: 'Starter',
-      monthlyPrice: 49,
-      annualPrice: 470,
-      period: billingPeriod === 'monthly' ? '/mo' : '/yr',
-      features: [
-        '1 user',
-        '50 active permits',
-        'Email alerts',
-        'Basic dashboard',
-        'CSV import',
-      ],
-      highlighted: false,
-    },
-    {
-      name: 'Pro',
-      monthlyPrice: 149,
-      annualPrice: 1430,
-      period: billingPeriod === 'monthly' ? '/mo' : '/yr',
-      features: [
-        'Up to 5 users',
-        'Unlimited permits',
-        'Advanced reminders',
-        'Full dashboard + attention center',
-        'AI-powered import (PDF, email, Excel)',
-      ],
-      highlighted: true,
-      badge: 'Most Popular',
-    },
-    {
-      name: 'Business',
-      monthlyPrice: 299,
-      annualPrice: 2870,
-      period: billingPeriod === 'monthly' ? '/mo' : '/yr',
-      features: [
-        'Unlimited users',
-        'Everything in Pro',
-        'Time tracking & job management',
-        'Role-based access control',
-        'Priority support',
-        'Revenue and invoicing',
-      ],
-      highlighted: false,
-    },
-    {
-      name: 'Enterprise',
-      monthlyPrice: 0,
-      annualPrice: 0,
-      contactUs: true,
-      period: '',
-      features: [
-        'Custom SLA',
-        'Dedicated onboarding',
-        'Volume seat pricing',
-        'County/API integration support',
-        'White-label potential',
-        'For GCs, franchise contractors & large commercial ops',
-      ],
-      highlighted: false,
-    },
-  ];
-
-  const faqs = [
-    {
-      question: 'Is there a free trial?',
-      answer:
-        'Sasquatch is currently in early access rather than open self-serve signup. Request access and we\'ll get you set up personally — the pricing below reflects what\'s coming at general availability.',
-    },
-    {
-      question: 'What\'s the difference between Database Access and the plans below?',
-      answer:
-        'Jurisdiction Database Access is a flat, company-wide subscription that gives your whole team the answer to what every Colorado jurisdiction requires — codes, cutoff times, contacts, and quirks. Starter, Pro, and Business are a separate, seat-based product for teams that also want to track permits, inspections, and jobs in Sasquatch. The two are independent — subscribe to either one, or both.',
-    },
-    {
-      question: 'Can I import my existing permits?',
-      answer:
-        'Absolutely. With a Starter, Pro, or Business plan, you can import permits via CSV, Excel, PDF, email forwarding, or even drag-and-drop images. Our AI parser handles the data extraction automatically.',
-    },
-    {
-      question: 'Which counties are supported?',
-      answer:
-        'Jurisdiction Database Access currently covers 20 Colorado counties: Denver, Arapahoe, Jefferson, Douglas, El Paso, Boulder, Larimer, Adams, Weld, Pueblo, Mesa, Garfield, Eagle, Summit, Routt, Broomfield, Clear Creek, Gilpin, Park, and Teller. More jurisdictions are added regularly. Don\'t see yours? Request it on our Jurisdictions page.',
-    },
-    {
-      question: 'What file types can I import?',
-      answer:
-        'PDF, PNG, JPG, CSV, Excel (.xlsx, .xls), Word documents, and email forwarding. Our AI parser can read most permit documents from Colorado jurisdictions.',
-    },
-    {
-      question: 'How does billing work?',
-      answer:
-        'Jurisdiction Database Access and the permit/inspection/job tracking plans are billed separately, since they\'re independent subscriptions — you can have one, the other, or both. Each is billed at the start of its billing cycle (monthly or annual), can be canceled anytime, and you won\'t be charged for the next cycle. No long-term contracts.',
-    },
-    {
-      question: 'Can I switch plans later?',
-      answer:
-        'Yes — you can upgrade or downgrade your Starter, Pro, or Business plan at any time. If you upgrade, you\'ll be charged a prorated amount for the remainder of your billing cycle. Database Access is a single flat plan, so there\'s nothing to switch there — just monthly or annual billing.',
-    },
-    {
-      question: 'Do you offer discounts for larger teams?',
-      answer:
-        'Yes. If you need more than 10 users or have specific enterprise requirements, contact us for custom pricing and volume discounts.',
-    },
-    {
-      question: 'What kind of support do you provide?',
-      answer:
-        'All plans include email support. Business plan customers get priority support with faster response times. We also have detailed documentation and video tutorials.',
-    },
-  ];
-
-  const getPrice = (item: { monthlyPrice: number; annualPrice: number }) => {
-    return billingPeriod === 'monthly' ? item.monthlyPrice : item.annualPrice;
-  };
+  usePageTitle(
+    'Pricing',
+    'Sasquatch plans for contractor offices: Team at $149/month for up to 5 users, Company at $299/month for unlimited users, and Enterprise for custom needs.'
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -170,118 +82,15 @@ export function PricingPage() {
               lineHeight: 1.1,
             }}
           >
-            Pricing built for field businesses.
+            Pricing built for contractor offices.
           </h1>
           <p
-            className="text-[#5A6560] text-lg max-w-4xl mx-auto mb-8"
+            className="text-[#5A6560] text-lg max-w-4xl mx-auto"
             style={{
               lineHeight: 1.6,
             }}
           >
-            Pay for what you use. Cancel anytime. No hidden fees.
-          </p>
-
-          {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-3 bg-[#F7F8F6] p-1 rounded-lg">
-            <button
-              onClick={() => setBillingPeriod('monthly')}
-              className={`px-6 py-2 rounded-md transition-all ${
-                billingPeriod === 'monthly'
-                  ? 'bg-white shadow-sm font-semibold text-[#1A3D2B]'
-                  : 'text-[#5A6560]'
-              }`}
-             
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingPeriod('annual')}
-              className={`px-6 py-2 rounded-md transition-all ${
-                billingPeriod === 'annual'
-                  ? 'bg-white shadow-sm font-semibold text-[#1A3D2B]'
-                  : 'text-[#5A6560]'
-              }`}
-             
-            >
-              Annual
-              <span className="ml-2 text-xs text-[#4CAF70]">Save 20%</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Jurisdiction Database Access */}
-      <section className="bg-[#1A3D2B] text-white py-16 lg:py-20">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <div
-              className="uppercase tracking-wider mb-4"
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '13px',
-                color: '#4CAF70',
-                letterSpacing: '0.1em',
-              }}
-            >
-              THE CORE PRODUCT
-            </div>
-            <h2
-              style={{
-                fontSize: 'clamp(28px, 3.5vw, 36px)',
-                fontWeight: 700,
-              }}
-            >
-              Jurisdiction Database Access
-            </h2>
-            <p className="text-white/70 max-w-2xl mx-auto mt-4" style={{ lineHeight: 1.6 }}>
-              Know what every Colorado jurisdiction requires — codes, cutoff times, contacts, and quirks — in one
-              place. One flat subscription for your whole company.
-            </p>
-          </div>
-
-          <Card className="bg-white text-[#1A1F1C] p-8 lg:p-10 rounded-xl">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Database className="w-5 h-5" style={{ color: '#1A3D2B' }} />
-                  <span className="text-sm font-semibold text-[#1A3D2B]">Database Access</span>
-                </div>
-                <div className="mb-2">
-                  <span className="text-5xl font-bold" style={{ color: '#1A1F1C' }}>
-                    ${getPrice(databaseAccess)}
-                  </span>
-                  <span className="text-[#5A6560] text-lg">{databaseAccess.period}</span>
-                </div>
-                {billingPeriod === 'annual' && (
-                  <p className="text-sm text-[#5A6560] mb-4">
-                    ${(getPrice(databaseAccess) / 12).toFixed(2)}/mo billed annually
-                  </p>
-                )}
-                <p className="text-sm text-[#5A6560] mb-6">
-                  Unlimited users. No per-seat pricing — your whole company is covered.
-                </p>
-                <Link to="/coming-soon" className="block">
-                  <Button
-                    className="w-full bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]"
-                    style={{ fontWeight: 600 }}
-                  >
-                    Request Early Access
-                  </Button>
-                </Link>
-              </div>
-              <ul className="space-y-3">
-                {databaseAccess.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm">
-                    <CheckCircle2 className="w-5 h-5 text-[#4CAF70] flex-shrink-0 mt-0.5" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Card>
-
-          <p className="text-center text-white/60 text-sm mt-8">
-            Want permit, inspection, and job tracking too? Those are add-ons — layer them on below.
+            Jobs, permits, inspections, reminders, and jurisdiction lookup in every plan.
           </p>
         </div>
       </section>
@@ -289,119 +98,15 @@ export function PricingPage() {
       {/* Pricing Cards */}
       <section className="bg-[#F7F8F6] py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h3
-              className="text-[#1A1F1C]"
-              style={{
-                fontSize: 'clamp(24px, 3vw, 32px)',
-                fontWeight: 700,
-              }}
-            >
-              Permit, Inspection &amp; Job Tracking — Add-ons
-            </h3>
-            <p className="text-[#5A6560] max-w-2xl mx-auto mt-3">
-              Layer these on top of Jurisdiction Database Access for teams that also want to run their permits,
-              inspections, and jobs in Sasquatch.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {plans.map((plan, i) => (
-              <Card
-                key={i}
-                className={`p-8 relative ${plan.highlighted ? 'border-2 border-[#1A3D2B] shadow-2xl scale-105' : 'shadow-lg'}`}
-              >
-                {plan.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-[#4CAF70] text-white px-4 py-1.5 rounded-full text-sm font-semibold">
-                      {plan.badge}
-                    </span>
-                  </div>
-                )}
+          <PlanCards />
 
-                <div className="text-center mb-8">
-                  <h3
-                    className="text-2xl mb-4"
-                    style={{
-                      fontWeight: 700,
-                      color: '#1A1F1C',
-                    }}
-                  >
-                    {plan.name}
-                  </h3>
-                  <div className="mb-2">
-                    {plan.contactUs ? (
-                      <span
-                        className="text-3xl font-bold"
-                        style={{ color: '#1A1F1C' }}
-                      >
-                        Contact Us
-                      </span>
-                    ) : (
-                      <>
-                        <span
-                          className="text-5xl font-bold"
-                          style={{ color: '#1A1F1C' }}
-                        >
-                          ${getPrice(plan)}
-                        </span>
-                        <span className="text-[#5A6560] text-lg">{plan.period}</span>
-                      </>
-                    )}
-                  </div>
-                  {billingPeriod === 'annual' && !plan.contactUs && (
-                    <p className="text-sm text-[#5A6560]">
-                      ${(getPrice(plan) / 12).toFixed(2)}/mo billed annually
-                    </p>
-                  )}
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm">
-                      <CheckCircle2 className="w-5 h-5 text-[#4CAF70] flex-shrink-0 mt-0.5" />
-                      <span className="text-[#1A1F1C]">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {plan.contactUs ? (
-                  <Link to="/contact" className="block">
-                    <Button
-                      className="w-full bg-white text-[#1A3D2B] border-2 border-[#1A3D2B] hover:bg-[#F7F8F6]"
-                      style={{ fontWeight: 600 }}
-                    >
-                      Contact Sales
-                    </Button>
-                  </Link>
-                ) : (
-                  <Link to="/coming-soon" className="block">
-                    <Button
-                      className={`w-full ${
-                        plan.highlighted
-                          ? 'bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]'
-                          : 'bg-white text-[#1A3D2B] border-2 border-[#1A3D2B] hover:bg-[#F7F8F6]'
-                      }`}
-                      style={{ fontWeight: 600 }}
-                    >
-                      Request Early Access
-                    </Button>
-                  </Link>
-                )}
-              </Card>
-            ))}
-          </div>
-
-          <p className="text-center text-[#5A6560] text-sm mt-8">
-            Early access pricing shown above. No credit card required to request access.
-          </p>
+          <p className="text-center text-[#5A6560] text-sm mt-8">{EARLY_ACCESS_NOTE}</p>
         </div>
       </section>
 
       {/* FAQ Section */}
       <section className="bg-white py-16 lg:py-24">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2
             className="text-[#1A1F1C] text-center mb-12"
             style={{
@@ -413,17 +118,12 @@ export function PricingPage() {
           </h2>
 
           <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border border-[#ECEEED] rounded-lg px-6">
-                <AccordionTrigger
-                  className="text-left hover:no-underline py-4"
-                  style={{ fontWeight: 600 }}
-                >
+            {FAQS.map((faq, i) => (
+              <AccordionItem key={faq.question} value={`item-${i}`} className="border border-[#ECEEED] rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:no-underline py-4" style={{ fontWeight: 600 }}>
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#5A6560] pb-4">
-                  {faq.answer}
-                </AccordionContent>
+                <AccordionContent className="text-[#5A6560] pb-4">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -432,7 +132,7 @@ export function PricingPage() {
 
       {/* Final CTA */}
       <section className="bg-[#1A3D2B] text-white py-16 lg:py-24">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2
             className="mb-6"
             style={{
@@ -443,15 +143,15 @@ export function PricingPage() {
             Ready to get started?
           </h2>
           <p className="text-white/70 text-lg mb-8">
-            Request early access and see how much time you can save.
+            Send a message and set up a 20-minute walkthrough.
           </p>
-          <Link to="/coming-soon">
+          <Link to="/contact">
             <Button
               size="lg"
               className="bg-white text-[#1A3D2B] hover:bg-gray-100"
               style={{ fontWeight: 600 }}
             >
-              Request Early Access
+              Book a 20-minute demo
             </Button>
           </Link>
         </div>

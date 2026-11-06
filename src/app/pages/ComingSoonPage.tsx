@@ -81,8 +81,8 @@ export function ComingSoonPage() {
               lineHeight: 1.6,
             }}
           >
-            Sasquatch is built and ready for a founding cohort of Colorado contractors. Request access below and
-            we'll reach out personally to get you set up.
+            Sasquatch is in early access for Colorado contractors. Request access below and I'll reach out
+            personally to get you set up.
           </p>
         </div>
       </section>
@@ -105,7 +105,7 @@ export function ComingSoonPage() {
                   Request received!
                 </h3>
                 <p className="text-sm mb-6" style={{ color: '#5A6560' }}>
-                  We'll reach out personally to get you set up. Keep an eye on your inbox.
+                  Expect a personal reply to get you set up. Keep an eye on your inbox.
                 </p>
                 <Link to="/features">
                   <Button
@@ -128,7 +128,7 @@ export function ComingSoonPage() {
                   </h3>
                 </div>
                 <p className="text-sm mb-6" style={{ color: '#5A6560' }}>
-                  Enter your email and we'll reach out personally to get you set up.
+                  Enter your email and I'll reach out personally to get you set up.
                 </p>
                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                   <input
@@ -156,7 +156,7 @@ export function ComingSoonPage() {
                 )}
                 {!submitError && (
                   <p className="text-xs mt-3" style={{ color: '#5A6560' }}>
-                    No spam. We'll reach out to set up your access.
+                    No spam. Just a personal reply to set up your access.
                   </p>
                 )}
               </>
@@ -182,20 +182,20 @@ export function ComingSoonPage() {
           <div className="grid sm:grid-cols-2 gap-6">
             {[
               {
-                title: 'AI-Powered Import',
-                desc: 'Upload PDFs, images, spreadsheets, or forward emails — Sasquatch extracts permit data automatically.',
+                title: 'Jobs, Permits, and Inspections',
+                desc: 'Track every job, permit, and inspection in one place.',
               },
               {
-                title: 'Permit Health Scoring',
-                desc: 'Every permit gets a health score so you see problems before they cost you time and money.',
+                title: 'Deadlines and Reminders',
+                desc: 'Expiration and inspection dates, with a morning email when something needs attention.',
               },
               {
-                title: 'Inspection Calendar',
-                desc: 'All inspections in one calendar with jurisdiction-specific cutoff rules built in.',
+                title: 'Attention Center',
+                desc: 'Blocked jobs and at-risk permits in one list.',
               },
               {
-                title: 'Cost Intelligence',
-                desc: 'Real-time budget vs. actual tracking with leakage alerts to protect your margins.',
+                title: 'Jurisdiction Lookup',
+                desc: 'Local requirements and portal links for supported Colorado jurisdictions.',
               },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
@@ -222,7 +222,7 @@ export function ComingSoonPage() {
                 className="border border-[#1A3D2B] text-[#1A3D2B] hover:bg-[#E6F4EC]"
                 style={{ fontWeight: 600 }}
               >
-                See All 25+ Features <ArrowRight className="w-4 h-4 ml-1" />
+                See All Features <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </Link>
           </div>

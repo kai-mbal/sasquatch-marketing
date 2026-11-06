@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 
 const LOGIN_URL = '/login';
-const REQUEST_ACCESS_URL = '/coming-soon';
+const DEMO_URL = '/contact';
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,10 +25,9 @@ export function Navigation() {
   }, [location]);
 
   const navLinks = [
-    { label: 'Features', href: '/features' },
-    { label: 'Jurisdictions', href: '/jurisdictions' },
+        { label: 'Features', href: '/features' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Governance', href: '/governance' },
+    { label: 'Jurisdictions', href: '/jurisdictions' },
     { label: 'About', href: '/about' },
   ];
 
@@ -77,12 +76,12 @@ export function Navigation() {
                 Log In
               </Button>
             </Link>
-            <Link to={REQUEST_ACCESS_URL}>
+            <Link to={DEMO_URL}>
               <Button
                 className="bg-[#1A3D2B] text-white hover:bg-[#2D5A3D]"
                 style={{ fontWeight: 600 }}
               >
-                Request Early Access
+                Book a Demo
               </Button>
             </Link>
           </div>
@@ -121,12 +120,12 @@ export function Navigation() {
                     Log In
                   </Button>
                 </Link>
-                <Link to={REQUEST_ACCESS_URL}>
+                <Link to={DEMO_URL}>
                   <Button
                     className="w-full bg-[#1A3D2B] text-white"
                     style={{ fontWeight: 600 }}
                   >
-                    Request Early Access
+                    Book a Demo
                   </Button>
                 </Link>
               </div>

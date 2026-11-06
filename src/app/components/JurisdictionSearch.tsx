@@ -84,7 +84,7 @@ export function JurisdictionSearch({ onRequestJurisdiction }: JurisdictionSearch
                       className="text-xs font-semibold px-2 py-1 rounded-full"
                       style={{ backgroundColor: '#E6F4EC', color: '#1E6B40' }}
                     >
-                      Covered
+                      Supported
                     </span>
                   </li>
                 ))}
@@ -94,10 +94,10 @@ export function JurisdictionSearch({ onRequestJurisdiction }: JurisdictionSearch
                 <MapPin className="w-6 h-6 shrink-0" style={{ color: '#C8821A' }} />
                 <div className="flex-1">
                   <p className="font-semibold" style={{ color: '#1A1F1C' }}>
-                    We don't cover "{query.trim()}" yet.
+                    "{query.trim()}" isn't supported yet.
                   </p>
                   <p className="text-sm" style={{ color: '#5A6560' }}>
-                    Want to be the reason we add it?
+                    Requests help decide what gets added next.
                   </p>
                 </div>
                 <Button

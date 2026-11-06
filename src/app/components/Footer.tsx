@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { VERIFY_NOTE } from '../data/jurisdictions';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -92,6 +93,11 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* Requirements Note */}
+        <p className="text-white/60 text-sm mb-8">
+          Local requirements are provided for reference. {VERIFY_NOTE}
+        </p>
 
         {/* Bottom Section */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

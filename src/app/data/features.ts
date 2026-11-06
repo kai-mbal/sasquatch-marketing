@@ -1,13 +1,14 @@
 import {
   Activity,
   Upload,
-  Mail,
   Briefcase,
   Calendar,
+  ClipboardCheck,
   AlertCircle,
   Users,
   FileStack,
   Bell,
+  SlidersHorizontal,
   FileText,
   UploadCloud,
   MapPin,
@@ -23,120 +24,113 @@ export interface Feature {
   icon: LucideIcon;
   title: string;
   description: string;
-  category?: 'permit' | 'inspection';
+  category?: 'attention' | 'permit' | 'inspection';
 }
 
 export const allFeatures: Feature[] = [
   {
     icon: AlertCircle,
     title: 'Attention Center',
+    description: 'All blocked jobs and at-risk permits in one place. See the issue and the action it needs.',
+    category: 'attention',
+  },
+  {
+    icon: Bell,
+    title: 'Daily Alert Email',
     description:
-      'All blocked jobs and at-risk permits in one place. See the issue, the estimated impact, and the recommended action.',
+      'At most one email each morning, and only when something needs attention: tomorrow\'s inspections, permits expiring soon, or items past due.',
+    category: 'attention',
   },
   {
     icon: Activity,
-    title: 'Permit Health Engine',
-    description:
-      "Know which permits are healthy, at risk, or blocked before any of them turn into a delay. Every permit is scored automatically.",
+    title: 'Permit Health',
+    description: 'See which permits are healthy, at risk, or blocked. Permits change color as expiration gets close.',
     category: 'permit',
   },
   {
     icon: Upload,
-    title: 'Smart Import (AI)',
-    description:
-      'Upload PDFs, images, or spreadsheets. AI extracts permit data automatically and adds it to your dashboard.',
-    category: 'permit',
-  },
-  {
-    icon: Mail,
-    title: 'Email Ingestion',
-    description:
-      "Forward permit confirmations directly to Sasquatch. It parses the email and creates the permit record for you.",
+    title: 'Smart Import',
+    description: 'Upload spreadsheets, PDFs, or images. Sasquatch pulls out the permit details for you to review.',
     category: 'permit',
   },
   {
     icon: FileStack,
     title: 'Bulk Operations',
-    description:
-      'Update, assign, or remind across multiple permits at once. Stop doing the same action 10 times in a row.',
+    description: 'Update the status of several permits or archive them at once.',
     category: 'permit',
   },
   {
     icon: FileUp,
-    title: 'Permit Upload (AI)',
+    title: 'Permit Upload',
     description:
-      'Drop in a single permit PDF or photo and get a finished permit record back. Sensitive identifiers are stripped before anything is processed.',
+      'Drop in a single permit PDF or photo and get a permit record to review. Sensitive identifiers are stripped before anything is processed.',
     category: 'permit',
   },
   {
     icon: Database,
     title: 'Import Pipeline & Scope Mapper',
-    description:
-      'Bring a work order and spreadsheet in as-is. Columns get matched, values cleaned up, and materials tied to the right job — no reformatting first.',
+    description: 'Bring a work order or spreadsheet in as-is. Columns get matched and values cleaned up, with no reformatting first.',
     category: 'permit',
   },
   {
     icon: FileText,
     title: 'Audit Trail',
-    description:
-      'Every change is logged. See who updated what and when. Perfect for accountability and compliance tracking.',
+    description: 'Changes are logged, so you can see who updated what and when.',
     category: 'permit',
   },
   {
     icon: UploadCloud,
     title: 'Document Uploads',
-    description:
-      'Attach PDFs, images, and files to any permit or job. Keep all your documents in one searchable place.',
+    description: 'Attach PDFs, images, and files to a permit so the paperwork stays with the record.',
     category: 'permit',
   },
   {
     icon: BadgeCheck,
     title: 'Compliance Credentials',
-    description:
-      'Track licenses, insurance, and certifications with expiration dates. Stay ahead of renewals and audits.',
+    description: 'Keep licenses, insurance, and certifications in one place with their expiration dates.',
     category: 'permit',
   },
   {
     icon: Calendar,
     title: 'Inspection Calendar',
+    description: 'See upcoming inspections on a calendar and open any one for its details.',
+    category: 'inspection',
+  },
+  {
+    icon: ClipboardCheck,
+    title: 'Inspection Records',
     description:
-      'Month and week views with all scheduled inspections. Never miss a cutoff time or forget a confirmation number again.',
+      'Record every inspection on a permit, with the inspector, confirmation number, time or window, result, and corrections.',
     category: 'inspection',
   },
   {
     icon: Briefcase,
-    title: 'Jobs from Permits',
-    description:
-      'Jobs are auto-generated from your permits. Track crew and progress — all in one place.',
+    title: 'Job Tracking',
+    description: 'Track each job by stage and status, link the permits that belong to it, or create a job from a permit.',
   },
   {
     icon: Users,
     title: 'Role-Based Access',
-    description:
-      'Control who sees what. Assign each team member a role — Admin, Manager, or Read-only — to keep financial and client details limited to the people who need them.',
+    description: 'Control who sees what. Give each team member a role: Admin, Manager, or Read-only.',
   },
   {
-    icon: Bell,
+    icon: SlidersHorizontal,
     title: 'Notification Controls',
-    description:
-      'Choose exactly what you get notified about, by email or in the app. Turn off the noise, keep the signal.',
+    description: 'Each person chooses which alerts they get.',
   },
   {
     icon: MapPin,
     title: 'Map View',
-    description:
-      'See all your permits and jobs on a map. Perfect for planning routes, spotting clusters, and visualizing workload by area.',
+    description: 'See your locations on a map to spot clusters and plan your workload by area.',
   },
   {
     icon: UserCog,
-    title: 'User Management (Admin)',
-    description:
-      'Invite users, assign roles (Admin, Manager, Read-only), and manage access from one place.',
+    title: 'User Management',
+    description: 'Invite users, assign roles, and manage access from one place.',
   },
   {
     icon: Building2,
     title: 'Locations',
-    description:
-      'Organize permits and jobs by location. View and filter by address or site for multi-site contractors.',
+    description: 'Organize work by address or site for multi-site contractors.',
   },
 ];
