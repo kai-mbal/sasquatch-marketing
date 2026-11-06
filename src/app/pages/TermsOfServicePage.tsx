@@ -4,6 +4,8 @@ import { Footer } from '../components/Footer';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { Card } from '../components/ui/card';
 
+const EFFECTIVE_DATE = 'December 6, 2026';
+
 const headingStyle = {
   fontSize: 'clamp(24px, 4vw, 28px)',
   fontWeight: 700,
@@ -27,9 +29,9 @@ export function TermsOfServicePage() {
           >
             Terms of Service
           </h1>
-          <p className="text-white/70">Effective date: September 9, 2026</p>
+          <p className="text-white/70">Effective date: {EFFECTIVE_DATE}</p>
           <p className="text-white/50 text-sm mt-2">
-            Replaces the version effective February 26, 2026
+            Replaces the version effective September 9, 2026, which applies until this date
           </p>
         </div>
       </section>
@@ -78,12 +80,13 @@ export function TermsOfServicePage() {
                 3. Description of the Service
               </h2>
               <p className="text-[#5A6560] leading-relaxed">
-                Sasquatch is a software platform that helps contractor organizations manage building permits,
-                inspections, reminders, documents, and related workflows. The Service may include: jurisdiction
-                reference data; permit, inspection, and job tracking; document storage and uploads; email ingestion and
-                notifications; AI-assisted features such as permit data extraction, import mapping, materials lists and
-                cost estimates, and job triage; expense and invoice tools; compliance credential tracking; and
-                integration with third-party data sources.
+                Sasquatch is a software platform that helps contractor organizations manage jobs, building permits,
+                inspections, reminders, documents, and related workflows. The Service may include: permit, inspection,
+                and job tracking; reminders and notifications; jurisdiction reference data compiled from public
+                sources; document storage and uploads; expense records and receipts; email ingestion; AI-assisted
+                features such as data extraction, import mapping, and job triage; and compliance credential tracking.
+                The Service does not file permits, schedule inspections, or connect to jurisdiction portals on your
+                behalf. Links to jurisdiction portals are provided for convenience.
               </p>
             </div>
 
@@ -112,8 +115,7 @@ export function TermsOfServicePage() {
                 The Service is provided for organizational and workflow convenience only. It does not constitute legal,
                 financial, accounting, permitting, engineering, or other professional advice. You are solely responsible
                 for obtaining any required professional advice and for all decisions you or your business make. We do
-                not guarantee the accuracy, completeness, or suitability of any data, estimates, or outputs (including
-                AI-generated content) for your specific situation. Use of the Service does not create a professional or
+                not guarantee the accuracy, completeness, or suitability of any data or outputs (including AI-generated content) for your specific situation. Use of the Service does not create a professional or
                 fiduciary relationship between you and us.
               </p>
             </div>
@@ -125,15 +127,15 @@ export function TermsOfServicePage() {
               </h2>
               <p className="text-[#5A6560] leading-relaxed mb-4">
                 The Service uses artificial intelligence and third-party data sources to generate or display content
-                (e.g., permit extraction, materials lists, cost estimates, job insights). Such content is provided for
+                (e.g., data extraction, job insights, jurisdiction answers). Such content is provided for
                 convenience only and may be incomplete, inaccurate, or outdated. We do not guarantee the correctness or
                 suitability of AI-generated or third-party data for your projects, permits, or business decisions.
               </p>
               <p className="text-[#5A6560] leading-relaxed">
                 You are solely responsible for verifying all information before relying on it and for any outcomes
                 resulting from your use of or reliance on such content. Our{' '}
-                <Link to="/governance" className="text-[#1A3D2B] underline hover:no-underline">
-                  AI Governance statement
+                <Link to="/security" className="text-[#1A3D2B] underline hover:no-underline">
+                  Security &amp; Data page
                 </Link>{' '}
                 describes how these features work, which outputs carry a confidence score, and what our redaction does
                 and does not cover.
@@ -143,15 +145,20 @@ export function TermsOfServicePage() {
             {/* 7 */}
             <div className="mb-12">
               <h2 className="text-[#1A1F1C] mb-4" style={headingStyle}>
-                7. Accuracy of Permit and Jurisdiction Information
+                7. Accuracy of Permit, Jurisdiction, and Reminder Information
               </h2>
               <p className="text-[#5A6560] leading-relaxed">
-                Permit statuses, jurisdiction rules, cutoff times, contact information, and other data may be sourced
+                Permit statuses, local requirements, jurisdiction rules, cutoff times, portal links, contact information, and other data may be sourced
                 from third parties or automated systems and may be delayed or incorrect. We do not guarantee the
                 accuracy or timeliness of such information. You are responsible for confirming permit status, deadlines,
-                and requirements with the relevant authorities. We are not liable for missed deadlines, rejected
-                permits, fines, or other consequences resulting from your reliance on information displayed in the
-                Service.
+                and requirements with the relevant authorities. Local requirements for supported jurisdictions are researched and reviewed, but they may be incomplete, outdated, or wrong, and a jurisdiction being listed as supported does not mean its information is complete or accurate. We are not liable for missed deadlines, rejected permits, fines, or other consequences resulting from your reliance on information displayed in the Service.
+              </p>
+              <p className="text-[#5A6560] leading-relaxed mt-4">
+                <strong className="text-[#1A1F1C]">Reminders and alerts.</strong> Reminders, alerts, and attention items
+                are a convenience. They depend on the dates and information entered in the Service and on email and
+                other systems outside our control, so they may be delayed, incomplete, or not delivered. You remain
+                responsible for tracking your own deadlines, inspections, and expirations, and we are not liable for
+                consequences resulting from a reminder or alert that was late, wrong, or not received.
               </p>
             </div>
 
@@ -242,24 +249,27 @@ export function TermsOfServicePage() {
                 <p className="text-[#1A1F1C]" style={{ lineHeight: 1.7 }}>
                   <strong>Please read this: your subscription renews automatically.</strong> Unless you cancel before
                   the end of your current billing period, your subscription will automatically renew for another period
-                  of the same length, and the payment method on file will be charged at the then-current rate. You can
-                  cancel at any time in your account settings or by emailing contact@sasquatchpermit.com, and
+                  of the same length, and the payment method on file will be charged at the then-current rate. You can cancel at any time by emailing contact@sasquatchpermit.com, and
                   cancellation takes effect at the end of the period you have already paid for.
                 </p>
               </Card>
 
               <p className="text-[#5A6560] leading-relaxed mb-4">
-                <strong className="text-[#1A1F1C]">Plans and fees.</strong> Fees are those displayed at the time of
-                purchase. Jurisdiction Database Access and the permit, inspection, and job tracking plans are
-                independent subscriptions and are billed separately; you may hold one, the other, or both.
+                <strong className="text-[#1A1F1C]">Early access.</strong> During early access, accounts are set up
+                individually and there is no self-serve checkout. This Section applies once a paid subscription begins
+                for your account.
               </p>
               <p className="text-[#5A6560] leading-relaxed mb-4">
-                <strong className="text-[#1A1F1C]">Billing.</strong> Subscriptions are billed in advance at the start of
-                each billing period, monthly or annually as you select. Payments are processed by Stripe, and by
-                subscribing you authorize recurring charges to your payment method until you cancel.
+                <strong className="text-[#1A1F1C]">Plans and fees.</strong> Fees and plan limits, including the number
+                of users, are those shown on our Pricing page at the time of purchase or agreed with you in writing.
               </p>
               <p className="text-[#5A6560] leading-relaxed mb-4">
-                <strong className="text-[#1A1F1C]">Upgrades and downgrades.</strong> Upgrades take effect immediately and
+                <strong className="text-[#1A1F1C]">Billing.</strong> Subscriptions are billed monthly in advance. Payments
+                are processed by Stripe, and by subscribing you authorize recurring charges to your payment method until
+                you cancel.
+              </p>
+              <p className="text-[#5A6560] leading-relaxed mb-4">
+                <strong className="text-[#1A1F1C]">Upgrades and downgrades.</strong> To change plans, contact us. Upgrades take effect immediately and
                 are charged a prorated amount for the remainder of the current period. Downgrades take effect at the
                 start of your next billing period.
               </p>
@@ -301,12 +311,8 @@ export function TermsOfServicePage() {
                 You may cancel at any time. Cancellation takes effect at the end of your current billing period, you
                 keep access until then, and you will not be charged again.
               </p>
-              <p className="text-[#5A6560] leading-relaxed mb-4">
-                <strong className="text-[#1A1F1C]">Annual plans.</strong> If you cancel an annual plan within 14 days of
-                your first payment on that plan, we will refund it in full.
-              </p>
               <p className="text-[#5A6560] leading-relaxed">
-                Otherwise, fees are non-refundable and we do not prorate refunds for partial periods — except where we
+                Fees are non-refundable and we do not prorate refunds for partial periods — except where we
                 terminate or discontinue the Service without cause, in which case Section 13 applies, or where a refund
                 is required by law.
               </p>
@@ -534,7 +540,7 @@ export function TermsOfServicePage() {
             {/* Effective Date */}
             <div className="mt-16 pt-8 border-t border-[#ECEEED]">
               <p className="text-[#5A6560] text-sm mb-2">
-                <strong>Effective date:</strong> September 9, 2026
+                <strong>Effective date:</strong> {EFFECTIVE_DATE}
               </p>
               <p className="text-[#5A6560] text-sm">
                 See also our{' '}
@@ -542,10 +548,10 @@ export function TermsOfServicePage() {
                   Privacy Policy
                 </Link>{' '}
                 and{' '}
-                <Link to="/governance" className="text-[#1A3D2B] underline hover:no-underline">
-                  AI Governance
+                <Link to="/security" className="text-[#1A3D2B] underline hover:no-underline">
+                  Security &amp; Data
                 </Link>{' '}
-                statement.
+                page.
               </p>
             </div>
           </div>

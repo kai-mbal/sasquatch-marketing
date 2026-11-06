@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { HomePage } from "./pages/HomePage";
 import { FeaturesPage } from "./pages/FeaturesPage";
 import { PricingPage } from "./pages/PricingPage";
@@ -6,7 +6,7 @@ import { JurisdictionsPage } from "./pages/JurisdictionsPage";
 import { AboutPage } from "./pages/AboutPage";
 import { ContactPage } from "./pages/ContactPage";
 import { LoginPage } from "./pages/LoginPage";
-import { GovernancePage } from "./pages/GovernancePage";
+import { SecurityPage } from "./pages/SecurityPage";
 import { NewsletterPage } from "./pages/NewsletterPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
@@ -39,8 +39,12 @@ export const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
+        path: "/security",
+        element: <SecurityPage />,
+      },
+      {
         path: "/governance",
-        element: <GovernancePage />,
+        element: <Navigate to="/security" replace />,
       },
       {
         path: "/newsletter",

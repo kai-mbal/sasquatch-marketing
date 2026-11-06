@@ -76,8 +76,8 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/governance" className="text-white/70 hover:text-white text-sm transition-colors">
-                  AI Governance
+                <Link to="/security" className="text-white/70 hover:text-white text-sm transition-colors">
+                  Security &amp; Data
                 </Link>
               </li>
               <li>

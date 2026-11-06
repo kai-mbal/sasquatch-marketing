@@ -4,6 +4,8 @@ import { Footer } from '../components/Footer';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { Card } from '../components/ui/card';
 
+const EFFECTIVE_DATE = 'December 6, 2026';
+
 export function PrivacyPolicyPage() {
   usePageTitle('Privacy Policy');
 
@@ -16,7 +18,12 @@ export function PrivacyPolicyPage() {
     {
       name: 'Stripe',
       purpose:
-        'Subscription billing. Stripe receives your billing contact and payment details directly — we never see or store your full card number.',
+        'Subscription billing, once paid billing begins for your account. Stripe receives your billing contact and payment details directly — we never see or store your full card number.',
+    },
+    {
+      name: 'Google',
+      purpose:
+        'Maps and address lookup inside the application (Google Maps Platform). Addresses you enter are sent from your browser to Google to place them on a map, and Google receives your IP address with that request.',
     },
     {
       name: 'Vercel',
@@ -53,7 +60,10 @@ export function PrivacyPolicyPage() {
           >
             Privacy Policy
           </h1>
-          <p className="text-white/70">Effective date: September 9, 2026</p>
+          <p className="text-white/70">Effective date: {EFFECTIVE_DATE}</p>
+          <p className="text-white/50 text-sm mt-2">
+            Replaces the version effective September 9, 2026, which applies until this date
+          </p>
         </div>
       </section>
 
@@ -96,8 +106,8 @@ export function PrivacyPolicyPage() {
                 <span className="text-[#4CAF70] font-semibold flex-shrink-0">—</span>
                 <span>
                   Sensitive identifiers are redacted before documents reach an AI model. Our{' '}
-                  <Link to="/governance" className="text-[#1A3D2B] underline hover:no-underline">
-                    AI Governance page
+                  <Link to="/security" className="text-[#1A3D2B] underline hover:no-underline">
+                    Security &amp; Data page
                   </Link>{' '}
                   explains exactly how, including where that protection stops.
                 </span>
@@ -194,8 +204,8 @@ export function PrivacyPolicyPage() {
               <p className="text-[#5A6560] leading-relaxed mb-4">
                 This is the bulk of what we hold. It includes permits and jobs (addresses, jurisdictions, project names,
                 statuses, inspection dates), uploaded documents (permit paperwork, work orders, invoices, receipts),
-                expense and invoice records, compliance credentials, and any client contact details you choose to store
-                alongside a job.
+                expense and invoice records, compliance credentials, any client contact details you choose to store
+                alongside a job, and any other information you choose to store in the Service.
               </p>
               <p className="text-[#5A6560] leading-relaxed">
                 We do not ask for social security numbers, driver's license numbers, or payment card numbers, and the
@@ -237,9 +247,11 @@ export function PrivacyPolicyPage() {
                 to investigate problems, and they are not used to build a profile of you.
               </p>
               <p className="text-[#5A6560] leading-relaxed">
-                <strong className="text-[#1A1F1C]">This website collects nothing.</strong> No cookies, no analytics, no
-                pixels, no session recording, no third-party scripts of any kind. The application itself uses browser
-                storage only to keep you signed in and remember interface preferences.
+                <strong className="text-[#1A1F1C]">This website does not track you.</strong> No cookies, no analytics, no
+                pixels, no session recording, no third-party scripts of any kind. Forms you choose to submit are handled
+                by the providers listed in Section 10. The application itself uses browser storage only to keep you
+                signed in, remember interface preferences, and save map locations, and it loads Google Maps on pages
+                that show a map.
               </p>
             </div>
 
@@ -273,8 +285,7 @@ export function PrivacyPolicyPage() {
                 8. How We Use Information
               </h2>
               <p className="text-[#5A6560] leading-relaxed mb-4">
-                We use it to operate the Service: to display and organize your permits and jobs, run AI-assisted
-                extraction and estimation, send notifications and reminders you've enabled, provide support you've asked
+                We use it to operate the Service: to display and organize your permits and jobs, run AI-assisted extraction and job triage, send notifications and reminders you've enabled, provide support you've asked
                 for, bill you, and keep the platform secure and working.
               </p>
               <p className="text-[#5A6560] leading-relaxed">
@@ -295,14 +306,12 @@ export function PrivacyPolicyPage() {
               <p className="text-[#5A6560] leading-relaxed mb-4">
                 AI features send your content to large language models operated by Amazon Web Services (Bedrock). Before
                 a document reaches a model, we redact sensitive identifiers such as social security numbers, driver's
-                license numbers, and payment card numbers. Chat and assistant features use a deliberately narrower
-                redaction set that preserves emails, phone numbers, and permit numbers, because answering those
-                questions requires seeing them.
+                license numbers, and payment card numbers. Chat, assistant, and other AI features use a deliberately narrower redaction set that preserves emails, phone numbers, and permit numbers, because answering those questions requires seeing them. Questions about jurisdictions are also converted into search embeddings by a model hosted on Bedrock.
               </p>
               <p className="text-[#5A6560] leading-relaxed">
                 Our{' '}
-                <Link to="/governance" className="text-[#1A3D2B] underline hover:no-underline">
-                  AI Governance page
+                <Link to="/security" className="text-[#1A3D2B] underline hover:no-underline">
+                  Security &amp; Data page
                 </Link>{' '}
                 describes the full pipeline, the limits of automated redaction, and which outputs carry a confidence
                 score. Your content is not used to train these models — see Section 11.
@@ -371,8 +380,7 @@ export function PrivacyPolicyPage() {
                     identifiers, no data enrichment from outside sources.
                   </li>
                   <li>
-                    <strong>We do not use your data for automated decisions about you.</strong> Nothing in Sasquatch
-                    scores, ranks, or profiles you or your business.
+                    <strong>We do not use your data for automated decisions about you.</strong> Health statuses and priorities in Sasquatch apply to permits and jobs. Nothing in Sasquatch scores, ranks, or profiles you or your business.
                   </li>
                 </ul>
               </Card>
@@ -388,7 +396,7 @@ export function PrivacyPolicyPage() {
               </h2>
               <p className="text-[#5A6560] leading-relaxed mb-4">
                 Working files behind the AI pipeline expire automatically: import files and everything derived from them
-                are deleted after 30 days, and materials-pipeline files after 90 days. Operational logs are retained for
+                are deleted after 30 days, and other AI working files after 90 days. Operational logs are retained for
                 troubleshooting and then rotated out.
               </p>
               <p className="text-[#5A6560] leading-relaxed mb-4">
@@ -469,8 +477,8 @@ export function PrivacyPolicyPage() {
               </p>
               <p className="text-[#5A6560] leading-relaxed">
                 Our{' '}
-                <Link to="/governance" className="text-[#1A3D2B] underline hover:no-underline">
-                  AI Governance &amp; Data Protection page
+                <Link to="/security" className="text-[#1A3D2B] underline hover:no-underline">
+                  Security &amp; Data page
                 </Link>{' '}
                 covers this in more detail, including what we are and aren't certified for. No system is perfectly
                 secure, and we don't claim otherwise.
@@ -556,10 +564,10 @@ export function PrivacyPolicyPage() {
             <div className="pt-8 border-t border-[#ECEEED]">
               <p className="text-[#5A6560] text-sm">
                 See also our{' '}
-                <Link to="/governance" className="text-[#1A3D2B] underline hover:no-underline">
-                  AI Governance &amp; Data Protection
+                <Link to="/security" className="text-[#1A3D2B] underline hover:no-underline">
+                  Security &amp; Data
                 </Link>{' '}
-                statement and our{' '}
+                page and our{' '}
                 <Link to="/terms" className="text-[#1A3D2B] underline hover:no-underline">
                   Terms of Service
                 </Link>

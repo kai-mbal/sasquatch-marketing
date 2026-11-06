@@ -69,7 +69,7 @@ sasquatch-site/
 │   │   │   ├── AboutPage.tsx
 │   │   │   ├── ContactPage.tsx
 │   │   │   ├── LoginPage.tsx
-│   │   │   ├── GovernancePage.tsx
+│   │   │   ├── SecurityPage.tsx
 │   │   │   ├── NewsletterPage.tsx
 │   │   │   ├── TermsOfServicePage.tsx
 │   │   │   └── features/
@@ -229,7 +229,7 @@ All routes defined in `src/app/routes.tsx`:
 | `/pricing` | `PricingPage` | Pricing tiers and plans |
 | `/jurisdictions` | `JurisdictionsPage` | Supported jurisdictions list |
 | `/about` | `AboutPage` | Company information |
-| `/governance` | `GovernancePage` | Governance and policies |
+| `/security` | `SecurityPage` | Security and data handling (`/governance` redirects here) |
 | `/newsletter` | `NewsletterPage` | Newsletter signup |
 | `/terms` | `TermsOfServicePage` | Terms of service |
 | `/contact` | `ContactPage` | Contact form |
